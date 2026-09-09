@@ -1,26 +1,290 @@
 @import "tailwindcss";
 
+/* Journal style using exact Journal design tokens */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1C1D1E;
+  --brand: #005274;
+  --brand-dark: #003e57;
+  --brand-light: #E6F0FA;
+  --brand-muted: #F8F9FA;
+  --accent: #005274;
+  --accent-hover: #003e57;
+  --accent-light: #E6F0FA;
+  --success: #068853;
+  --success-light: #e6f5ed;
+  --warning: #CC4E00;
+  --danger: #A41022;
+  --grey-100: #F8F9FA;
+  --grey-200: #EFEFF0;
+  --grey-300: #D8D9DA;
+  --grey-400: #C2C3C6;
+  --grey-500: #767676;
+  --grey-600: #414246;
+  --grey-700: #2F3032;
+  --grey-800: #1C1D1E;
+  --border: #D8D9DA;
+  --border-light: #EFEFF0;
+  --card: #ffffff;
+  --muted: #F8F9FA;
+  --muted-foreground: #767676;
+  --accent-gold: #c9a96e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --font-sans: var(--font-open-sans);
+  --font-serif: var(--font-source-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #F8F9FA;
+  color: #1C1D1E;
+  font-family: var(--font-open-sans), "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  color: #1C1D1E;
+  letter-spacing: -0.01em;
+}
+
+.font-display {
+  font-family: var(--font-source-serif), "Source Serif Pro", Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: #005274;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #003e57;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:visited {
+  color: #005274;
+}
+
+:focus-visible {
+  outline: 2px solid #005274;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #E6F0FA;
+}
+
+/* Prose - Journal paragraphs should be Open Sans */
+.prose-epc {
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #2F3032;
+  max-width: none;
+}
+
+.prose-epc h2 {
+  font-family: var(--font-source-serif), "Source Serif Pro", Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1D1E;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #EFEFF0;
+}
+
+.prose-epc h3 {
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1C1D1E;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+.prose-epc p {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  color: #2F3032;
+}
+
+.prose-epc ul, .prose-epc ol {
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.prose-epc li {
+  margin-bottom: 4px;
+}
+
+.prose-epc a {
+  color: #005274;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Cards - Journal uses 4px radius, subtle border #D8D9DA */
+.journal-card {
+  background: #fff;
+  border: 1px solid #D8D9DA;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.journal-card-header {
+  background: #fff;
+  border-bottom: 1px solid #EFEFF0;
+  padding: 12px 16px;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #414246;
+}
+
+.journal-side-block {
+  background: #fff;
+  border: 1px solid #D8D9DA;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.journal-side-block-header {
+  background: #005274;
+  color: #fff;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+}
+
+.journal-side-block-body {
+  padding: 14px;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #2F3032;
+}
+
+/* Table - Journal uses Grey 100 header, thin borders */
+.journal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 13px;
+}
+
+.journal-table th {
+  background: #F8F9FA;
+  border: 1px solid #D8D9DA;
+  padding: 9px 12px;
+  text-align: left;
+  font-weight: 700;
+  color: #414246;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.journal-table td {
+  border: 1px solid #D8D9DA;
+  padding: 12px;
+  vertical-align: top;
+  background: #fff;
+  color: #2F3032;
+}
+
+/* Buttons - Journal primary is #005274 */
+.btn-primary {
+  background: #005274;
+  color: #fff;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 9px 16px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #005274;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-primary:hover {
+  background: #003e57;
+  border-color: #003e57;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-ghost {
+  background: #fff;
+  border: 1px solid #C2C3C6;
+  color: #005274;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ghost:hover {
+  background: #F8F9FA;
+  border-color: #767676;
+  color: #003e57;
+  text-decoration: none;
+}
+
+.btn-ghost:focus-visible {
+  outline: 2px solid #005274;
+}
+
+/* Scrollbar subtle */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C2C3C6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F9FA;
 }
