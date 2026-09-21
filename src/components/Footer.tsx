@@ -9,9 +9,7 @@ export function Footer() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm">
             <div>
               <p className="font-display text-base font-bold leading-tight text-white">Environmental Processes and Chemistry</p>
-              <p className="mt-3 text-sm leading-6 text-white/70">
-                Diamond open access, peer reviewed. No article processing charges. No subscription paywall. All articles under CC BY 4.0.
-              </p>
+              <p className="mt-3 text-sm leading-6 text-white/70">Peer reviewed. Open access. All articles under CC BY 4.0.</p>
               <p className="mt-4 text-xs leading-5 text-white/50">
                 Online ISSN {siteConfig.issn.online}
                 <br />
@@ -83,7 +81,7 @@ export function Footer() {
                   href={getOjsUrl(siteConfig.ojsLinks.submission)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex justify-center rounded bg-white px-4 py-2 text-sm font-semibold text-[#005274] hover:bg-[#F8F9FA]"
+                  className="inline-flex justify-center rounded bg-white px-4 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]"
                 >
                   Submit a manuscript
                 </Link>

@@ -45,3 +45,6 @@ tunnel*.mjs
 tunnel-*.txt
 serveo.log*
 ltunnel.log
+.vercel
+
+*.docx

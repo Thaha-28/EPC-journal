@@ -63,21 +63,21 @@ export default function AimsScopePage() {
   return (
     <JournalLayout>
       <div className="border-b border-border bg-[#F8F9FA] px-6 py-3 flex items-center gap-2 text-xs">
-        <Link href="/" className="text-[#005274] hover:underline">
+        <Link href="/" className="text-[#1C1D1E] hover:underline">
           Home
         </Link>
         <span className="text-muted-foreground">/</span>
-        <span className="font-medium text-[#005274]">Aims and Scope</span>
+        <span className="font-medium text-[#1C1D1E]">Aims and Scope</span>
       </div>
 
       <div className="px-6 sm:px-8 py-6">
-        <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">About the journal</p>
+        <p className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">About the journal</p>
         <h1 className="mt-1 font-display text-2xl font-bold text-[#1C1D1E]">Aims and Scope</h1>
         <p className="mt-3 text-sm leading-7 text-[#2F3032]">
-          <strong>Environmental Processes and Chemistry</strong> is a diamond open access, peer reviewed journal that publishes rigorous mechanistic and systems level research on processes that govern environmental behavior. We welcome experimental, field, and modelling studies that advance understanding of chemical, biological, and physical processes across natural and engineered environments, with strong emphasis on processes, interfaces, transformation, and sustainability.
+          <strong>Environmental Processes and Chemistry</strong> is a peer reviewed journal that publishes rigorous mechanistic and systems level research on processes that govern environmental behavior. We welcome experimental, field, and modelling studies that advance understanding of chemical, biological, and physical processes across natural and engineered environments, with strong emphasis on processes, interfaces, transformation, and sustainability.
         </p>
         <p className="mt-3 text-sm leading-7 text-[#2F3032]">
-          The journal publishes technically correct and scientifically motivated work, including useful negative results and replication studies, under single blind peer review with at least two independent reviewers. No article processing charges apply.
+          The journal publishes technically correct and scientifically motivated work, including useful negative results and replication studies, through peer review.
         </p>
       </div>
 
@@ -87,14 +87,14 @@ export default function AimsScopePage() {
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {scopeGroups.map((group) => (
-            <div key={group.title} className="rounded border border-[#D8D9DA] bg-[#F8F9FA] overflow-hidden">
-              <div className="bg-white border-b border-[#D8D9DA] px-4 py-2.5">
-                <h3 className="text-sm font-bold text-[#005274]">{group.title}</h3>
+            <div key={group.title} className="rounded border border-[#EFEFF0] bg-white overflow-hidden">
+              <div className="bg-[#F8F9FA] border-b border-[#EFEFF0] px-4 py-2.5">
+                <h3 className="text-sm font-semibold text-[#1C1D1E]">{group.title}</h3>
               </div>
               <ul className="px-4 py-3 space-y-1.5 text-sm leading-5 text-[#2F3032]">
                 {group.items.map((item) => (
                   <li key={item} className="flex gap-2">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#005274]"></span>
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#767676]"></span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -133,12 +133,12 @@ export default function AimsScopePage() {
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="rounded border border-[#D8D9DA] bg-[#F8F9FA] p-4">
-            <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">Diamond open access</p>
-            <p className="mt-1 text-sm leading-6 text-[#414246]">No article processing charges. No subscription paywall. All content published under CC BY 4.0. Peer review is single blind with at least two reviewers. Policies follow COPE and WAME.</p>
+          <div className="rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#1C1D1E]">Open access</p>
+            <p className="mt-1 text-sm leading-6 text-[#414246]">All content is open access under CC BY 4.0.</p>
           </div>
-          <div className="rounded border border-[#D8D9DA] bg-white p-4">
-            <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">Audience</p>
+          <div className="rounded border border-[#EFEFF0] bg-white p-4">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#1C1D1E]">Audience</p>
             <p className="mt-1 text-sm leading-6 text-[#414246]">Environmental chemists, process engineers, biologists, ecologists, geochemists, geographers, modelers, and sustainability researchers in academia, government, and industry.</p>
           </div>
         </div>

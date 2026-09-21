@@ -25,15 +25,15 @@ export default function EditorialBoardPage() {
   return (
     <JournalLayout>
       <div className="border-b border-border bg-[#f8f9fb] px-6 py-3 flex items-center gap-2 text-xs">
-        <Link href="/" className="text-[#0066cc] hover:underline">
+        <Link href="/" className="text-[#1C1D1E] hover:underline">
           Home
         </Link>
         <span className="text-muted-foreground">/</span>
-        <span className="font-medium text-[#005274]">Editorial Board</span>
+        <span className="font-medium text-[#1C1D1E]">Editorial Board</span>
       </div>
       <div className="px-6 sm:px-8 py-6">
-        <p className="text-xs font-bold tracking-widest uppercase text-[#0066cc]">People</p>
-        <h1 className="mt-1 font-display text-2xl font-bold text-[#005274]">Editorial Board</h1>
+        <p className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">People</p>
+        <h1 className="mt-1 font-display text-2xl font-bold text-[#1C1D1E]">Editorial Board</h1>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">Our board combines environmental chemistry, process engineering, and atmospheric science.</p>
       </div>
 
@@ -43,11 +43,11 @@ export default function EditorialBoardPage() {
           <div className="divide-y divide-border">
             {board.editorsInChief.map((m) => (
               <div key={m.name} className="flex gap-4 p-4">
-                <div className="h-10 w-10 shrink-0 rounded-full bg-[#eef2f7] flex items-center justify-center text-sm font-bold text-[#005274]">{m.name.split(" ").pop()?.[0] ?? "E"}</div>
+                <div className="h-10 w-10 shrink-0 rounded-full bg-[#eef2f7] flex items-center justify-center text-sm font-bold text-[#1C1D1E]">{m.name.split(" ").pop()?.[0] ?? "E"}</div>
                 <div>
-                  <p className="text-sm font-semibold text-[#005274]">{m.name}</p>
+                  <p className="text-sm font-semibold text-[#1C1D1E]">{m.name}</p>
                   <p className="text-xs text-muted-foreground">{m.affiliation}</p>
-                  <span className="mt-1 inline-flex rounded-full bg-[#f8f9fb] border border-border px-2 py-0.5 text-xs font-medium text-[#005274]">{m.area}</span>
+                  <span className="mt-1 inline-flex rounded-full bg-[#f8f9fb] border border-border px-2 py-0.5 text-xs font-medium text-[#1C1D1E]">{m.area}</span>
                 </div>
               </div>
             ))}
@@ -59,7 +59,7 @@ export default function EditorialBoardPage() {
           <div className="divide-y divide-border">
             {board.associateEditors.map((m) => (
               <div key={m.name} className="p-4">
-                <p className="text-sm font-semibold text-[#005274]">{m.name}</p>
+                <p className="text-sm font-semibold text-[#1C1D1E]">{m.name}</p>
                 <p className="text-xs text-muted-foreground">{m.affiliation}</p>
                 <p className="mt-1 text-xs leading-5 text-muted-foreground">{m.area}</p>
               </div>
@@ -68,7 +68,7 @@ export default function EditorialBoardPage() {
         </div>
 
         <div className="rounded-lg border border-dashed border-border bg-white px-4 py-3 text-sm leading-6">
-          <span className="font-semibold text-[#005274]">Advisory Board:</span> <span className="text-muted-foreground">International advisory board under formation. If you are interested in serving, please contact the editorial office via the contact page.</span>
+          <span className="font-semibold text-[#1C1D1E]">Advisory Board:</span> <span className="text-muted-foreground">International advisory board under formation. If you are interested in serving, please contact the editorial office via the contact page.</span>
         </div>
       </div>
     </JournalLayout>

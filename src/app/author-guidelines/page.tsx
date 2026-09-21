@@ -11,28 +11,28 @@ export const metadata: Metadata = {
 export default function AuthorGuidelinesPage() {
   return (
     <JournalLayout>
-      <div className="border-b border-border bg-[#f8f9fb] px-6 py-3 flex items-center gap-2 text-xs">
-        <Link href="/" className="text-[#0066cc] hover:underline">
+      <div className="border-b border-border bg-[#F8F9FA] px-6 py-3 flex items-center gap-2 text-xs">
+        <Link href="/" className="text-[#1C1D1E] hover:underline">
           Home
         </Link>
-        <span className="text-muted-foreground">/</span>
-        <span className="font-medium text-[#005274]">Author Guidelines</span>
+        <span className="text-[#767676]">/</span>
+        <span className="font-medium text-[#1C1D1E]">Author Guidelines</span>
       </div>
       <div className="px-6 sm:px-8 py-6">
-        <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">For authors</p>
+        <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">For authors</p>
         <h1 className="mt-1 font-display text-2xl font-bold text-[#1C1D1E]">Author Guidelines</h1>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">Prepare your manuscript before you log in to the submission system. Templates are provided in the system to ensure consistent formatting.</p>
       </div>
 
       <div className="border-t border-border bg-white px-6 sm:px-8 py-6">
-        <div className="rounded-lg bg-[#005274] p-5 text-white">
-          <p className="text-sm font-semibold">Submit your manuscript</p>
-          <p className="mt-1 text-sm leading-6 text-white/75">Submission, status tracking, revisions, and proofs are handled securely in the online system.</p>
+        <div className="rounded border border-[#EFEFF0] bg-[#F8F9FA] p-5">
+          <p className="text-sm font-semibold text-[#1C1D1E]">Submit your manuscript</p>
+          <p className="mt-1 text-sm leading-6 text-[#414246]">Submission, status tracking, revisions, and proofs are handled securely in the online system.</p>
           <div className="mt-3 flex flex-wrap gap-2">
-            <Link href={getOjsUrl(siteConfig.ojsLinks.submission)} target="_blank" rel="noopener noreferrer" className="rounded bg-white px-4 py-2 text-sm font-semibold text-[#005274] hover:bg-white/90">
+            <Link href={getOjsUrl(siteConfig.ojsLinks.submission)} target="_blank" rel="noopener noreferrer" className="rounded bg-[#1C1D1E] px-4 py-2 text-sm font-semibold text-white hover:bg-black">
               Start submission
             </Link>
-            <Link href={getOjsUrl(siteConfig.ojsLinks.register)} target="_blank" rel="noopener noreferrer" className="rounded border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/15">
+            <Link href={getOjsUrl(siteConfig.ojsLinks.register)} target="_blank" rel="noopener noreferrer" className="rounded border border-[#D8D9DA] bg-white px-4 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]">
               Register account
             </Link>
           </div>
@@ -53,7 +53,7 @@ export default function AuthorGuidelinesPage() {
           <h3>References and units</h3>
           <p>Use consistent citation style. Use SI units. Show uncertainties where relevant. Report detection limits and QA QC.</p>
           <h2>Peer review</h2>
-          <p>Single blind, at least two independent reviewers, editor makes final decision. Typical timeline: first decision within 4 to 6 weeks.</p>
+          <p>Peer review is conducted by at least two independent reviewers, editor makes final decision. Typical timeline: first decision within 4 to 6 weeks.</p>
           <h2>After acceptance</h2>
           <p>Copyediting is light. Proofs are sent to corresponding authors. Articles are published with Crossref DOIs under CC BY 4.0.</p>
           <h2>Quick checklist</h2>

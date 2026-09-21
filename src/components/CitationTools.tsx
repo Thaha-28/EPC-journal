@@ -123,7 +123,7 @@ export function CitationTools({ article }: { article: OjsArticle }) {
 
   return (
     <div className="rounded border border-[#D8D9DA] bg-white p-4">
-      <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">How to cite</p>
+      <p className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">How to cite</p>
       <p className="mt-2 text-sm leading-6 text-[#1C1D1E]">{apaText}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button onClick={handleCopy} className="rounded border border-[#D8D9DA] bg-[#F8F9FA] px-3 py-1.5 text-xs font-semibold text-[#1C1D1E] hover:bg-white">
@@ -131,7 +131,7 @@ export function CitationTools({ article }: { article: OjsArticle }) {
         </button>
         <button
           onClick={() => downloadFile(generateRIS(article), `EPC-${article.id}.ris`, "application/x-research-info-systems")}
-          className="rounded border border-[#D8D9DA] bg-white px-3 py-1.5 text-xs font-semibold text-[#005274] hover:bg-[#F8F9FA]"
+          className="rounded border border-[#D8D9DA] bg-white px-3 py-1.5 text-xs font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]"
         >
           Download RIS
         </button>
@@ -156,21 +156,21 @@ export function CitationTools({ article }: { article: OjsArticle }) {
           </button>
           <button
             onClick={() => downloadFile(generateEndNote(article), `EPC-${article.id}.enw`, "application/x-endnote-refer")}
-            className="rounded border border-[#D8D9DA] bg-white px-3 py-2 text-xs font-semibold text-[#005274] hover:bg-[#F8F9FA] text-left"
+            className="rounded border border-[#D8D9DA] bg-white px-3 py-2 text-xs font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA] text-left"
           >
             EndNote
             <span className="block text-xs font-normal text-[#767676]">.enw</span>
           </button>
           <button
             onClick={() => downloadFile(apaText, `EPC-${article.id}-APA.txt`, "text/plain")}
-            className="rounded border border-[#D8D9DA] bg-white px-3 py-2 text-xs font-semibold text-[#005274] hover:bg-[#F8F9FA] text-left"
+            className="rounded border border-[#D8D9DA] bg-white px-3 py-2 text-xs font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA] text-left"
           >
             APA
             <span className="block text-xs font-normal text-[#767676]">text</span>
           </button>
           <button
             onClick={() => downloadFile(generateVancouver(article), `EPC-${article.id}-Vancouver.txt`, "text/plain")}
-            className="col-span-2 rounded border border-[#D8D9DA] bg-white px-3 py-2 text-xs font-semibold text-[#005274] hover:bg-[#F8F9FA] text-left"
+            className="col-span-2 rounded border border-[#D8D9DA] bg-white px-3 py-2 text-xs font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA] text-left"
           >
             Vancouver
             <span className="block text-xs font-normal text-[#767676]">text</span>
@@ -228,7 +228,7 @@ export function ArticleSideTools({ article }: { article: OjsArticle }) {
         </button>
         <button
           onClick={() => downloadFile(generateRIS(article), `EPC-${article.id}.ris`, "application/x-research-info-systems")}
-          className="col-span-2 rounded border border-[#D8D9DA] bg-[#F8F9FA] px-3 py-2 font-semibold text-[#005274] hover:bg-white"
+          className="col-span-2 rounded border border-[#D8D9DA] bg-[#F8F9FA] px-3 py-2 font-semibold text-[#1C1D1E] hover:bg-white"
         >
           Export citation
         </button>
@@ -275,7 +275,7 @@ export function FigureDownload({ src, filename, label }: { src: string; filename
       <button
         onClick={handleDownload}
         disabled={downloading}
-        className="inline-flex items-center gap-1.5 rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#005274] hover:bg-white hover:border-[#C2C3C6] disabled:opacity-60"
+        className="inline-flex items-center gap-1.5 rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#1C1D1E] hover:bg-white hover:border-[#C2C3C6] disabled:opacity-60"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
           <path d="M12 5v10M8 11l4 4 4-4M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2" />

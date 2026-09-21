@@ -12,14 +12,14 @@ export default function ContactPage() {
   return (
     <JournalLayout>
       <div className="border-b border-border bg-[#f8f9fb] px-6 py-3 flex items-center gap-2 text-xs">
-        <Link href="/" className="text-[#0066cc] hover:underline">
+        <Link href="/" className="text-[#1C1D1E] hover:underline">
           Home
         </Link>
         <span className="text-muted-foreground">/</span>
-        <span className="font-medium text-[#005274]">Contact</span>
+        <span className="font-medium text-[#1C1D1E]">Contact</span>
       </div>
       <div className="px-6 sm:px-8 py-6">
-        <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">Contact</p>
+        <p className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Contact</p>
         <h1 className="mt-1 font-display text-2xl font-bold text-[#1C1D1E]">Contact the editorial office</h1>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">For submissions, use the online submission system. For general queries, use the form below or write directly to the editorial inbox.</p>
       </div>
@@ -44,7 +44,7 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="journal-card border-amber-200 bg-[#fffaf0]">
-            <div className="journal-card-header bg-[#c9a96e] text-[#005274]">For submissions</div>
+            <div className="journal-card-header bg-[#c9a96e] text-[#1C1D1E]">For submissions</div>
             <div className="p-4 text-sm leading-6 text-muted-foreground">Do not use this form to submit manuscripts. Use the online submission system so your files, metadata, and correspondence are tracked together.</div>
           </div>
           <div className="journal-card">

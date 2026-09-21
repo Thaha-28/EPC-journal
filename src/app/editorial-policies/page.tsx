@@ -11,25 +11,25 @@ export default function EditorialPoliciesPage() {
   return (
     <JournalLayout>
       <div className="border-b border-border bg-[#F8F9FA] px-6 py-3 flex items-center gap-2 text-xs">
-        <Link href="/" className="text-[#005274] hover:underline">
+        <Link href="/" className="text-[#1C1D1E] hover:underline">
           Home
         </Link>
         <span className="text-muted-foreground">/</span>
-        <span className="font-medium text-[#005274]">Editorial Policies</span>
+        <span className="font-medium text-[#1C1D1E]">Editorial Policies</span>
       </div>
       <div className="px-6 sm:px-8 py-6">
-        <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">Policies</p>
+        <p className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Policies</p>
         <h1 className="mt-1 font-display text-2xl font-bold text-[#1C1D1E]">Editorial Policies</h1>
         <p className="mt-2 text-sm leading-6 text-[#414246]">How we handle peer review, ethics, and integrity. Policies follow guidance from the Committee on Publication Ethics (COPE) and the World Association of Medical Editors (WAME) and are enforced in the editorial workflow.</p>
       </div>
       <div className="border-t border-border bg-white px-6 sm:px-8 py-6 prose-epc">
         <h2>Peer review</h2>
         <ul>
-          <li>Single blind review. Authors do not know reviewers, reviewers know authors.</li>
+          <li>Peer review is conducted by independent experts. Authors and reviewers remain confidential where required.</li>
           <li>At least two independent reviewers per manuscript. A third is sought when recommendations diverge.</li>
           <li>Editors handle conflicts and recuse themselves when they have a competing interest.</li>
           <li>Reviewers agree to confidentiality and timely, constructive feedback.</li>
-          <li>Editorial decisions are based on scientific validity and importance to the scope, not on predicted citations.</li>
+          <li>Editorial decisions are based on scientific validity and importance to the scope.</li>
         </ul>
 
         <h2>Research and publication ethics</h2>

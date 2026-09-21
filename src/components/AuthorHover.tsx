@@ -56,7 +56,7 @@ export function AuthorHover({ name, affiliation }: { name: string; affiliation?:
         tabIndex={0}
         role="button"
         aria-label={`${name}, ${affiliation}`}
-        className="font-semibold text-[#1C1D1E] underline decoration-dotted decoration-[#C2C3C6] underline-offset-4 cursor-help hover:text-[#005274] hover:decoration-[#005274] focus:outline-none focus:text-[#005274] focus:decoration-[#005274]"
+        className="font-semibold text-[#1C1D1E] underline decoration-dotted decoration-[#C2C3C6] underline-offset-4 cursor-help hover:text-[#1C1D1E] hover:decoration-[#1C1D1E] focus:outline-none focus:text-[#1C1D1E] focus:decoration-[#1C1D1E]"
       >
         {name}
       </span>

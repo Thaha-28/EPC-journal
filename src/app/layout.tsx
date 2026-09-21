@@ -20,7 +20,7 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Diamond Open Access Journal`,
+    default: `${siteConfig.name} | Peer Reviewed Journal`,
     template: `%s | ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-screen flex flex-col bg-[#F8F9FA] text-foreground">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-[#005274] focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-[#1C1D1E] focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:text-white"
         >
           Skip to content
         </a>

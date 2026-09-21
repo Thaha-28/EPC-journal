@@ -4,17 +4,17 @@
 :root {
   --background: #ffffff;
   --foreground: #1C1D1E;
-  --brand: #005274;
-  --brand-dark: #003e57;
-  --brand-light: #E6F0FA;
+  --brand: #1C1D1E;
+  --brand-dark: #000000;
+  --brand-light: #F8F9FA;
   --brand-muted: #F8F9FA;
-  --accent: #005274;
-  --accent-hover: #003e57;
-  --accent-light: #E6F0FA;
-  --success: #068853;
-  --success-light: #e6f5ed;
-  --warning: #CC4E00;
-  --danger: #A41022;
+  --accent: #1C1D1E;
+  --accent-hover: #000000;
+  --accent-light: #F8F9FA;
+  --success: #1C1D1E;
+  --success-light: #F8F9FA;
+  --warning: #767676;
+  --danger: #767676;
   --grey-100: #F8F9FA;
   --grey-200: #EFEFF0;
   --grey-300: #D8D9DA;
@@ -23,12 +23,12 @@
   --grey-600: #414246;
   --grey-700: #2F3032;
   --grey-800: #1C1D1E;
-  --border: #D8D9DA;
-  --border-light: #EFEFF0;
+  --border: #EFEFF0;
+  --border-light: #F8F9FA;
   --card: #ffffff;
   --muted: #F8F9FA;
   --muted-foreground: #767676;
-  --accent-gold: #c9a96e;
+  --accent-gold: #EFEFF0;
 }
 
 @theme inline {
@@ -77,27 +77,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #005274;
+  color: #1C1D1E;
   text-decoration: none;
 }
 
 a:hover {
-  color: #003e57;
+  color: #000000;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 a:visited {
-  color: #005274;
+  color: #1C1D1E;
 }
 
 :focus-visible {
-  outline: 2px solid #005274;
+  outline: 2px solid #1C1D1E;
   outline-offset: 2px;
 }
 
 ::selection {
-  background: #E6F0FA;
+  background: #F8F9FA;
 }
 
 /* Prose - Journal paragraphs should be Open Sans */
@@ -145,7 +145,7 @@ a:visited {
 }
 
 .prose-epc a {
-  color: #005274;
+  color: #1C1D1E;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -179,14 +179,15 @@ a:visited {
 }
 
 .journal-side-block-header {
-  background: #005274;
-  color: #fff;
+  background: #F8F9FA;
+  color: #1C1D1E;
   font-family: var(--font-open-sans), "Open Sans", sans-serif;
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 10px 14px;
+  border-bottom: 1px solid #EFEFF0;
 }
 
 .journal-side-block-body {
@@ -225,9 +226,9 @@ a:visited {
   color: #2F3032;
 }
 
-/* Buttons - Journal primary is #005274 */
+/* Buttons - minimal */
 .btn-primary {
-  background: #005274;
+  background: #1C1D1E;
   color: #fff;
   font-family: var(--font-open-sans), "Open Sans", sans-serif;
   font-size: 13px;
@@ -238,24 +239,24 @@ a:visited {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #005274;
+  border: 1px solid #1C1D1E;
   transition: background 0.15s, border-color 0.15s;
 }
 
 .btn-primary:hover {
-  background: #003e57;
-  border-color: #003e57;
+  background: #000000;
+  border-color: #000000;
   color: #fff;
   text-decoration: none;
 }
 
 .btn-ghost {
   background: #fff;
-  border: 1px solid #C2C3C6;
-  color: #005274;
+  border: 1px solid #EFEFF0;
+  color: #1C1D1E;
   font-family: var(--font-open-sans), "Open Sans", sans-serif;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 9px 16px;
   border-radius: 4px;
   display: inline-flex;
@@ -265,13 +266,13 @@ a:visited {
 
 .btn-ghost:hover {
   background: #F8F9FA;
-  border-color: #767676;
-  color: #003e57;
+  border-color: #D8D9DA;
+  color: #1C1D1E;
   text-decoration: none;
 }
 
 .btn-ghost:focus-visible {
-  outline: 2px solid #005274;
+  outline: 2px solid #1C1D1E;
 }
 
 /* Scrollbar subtle */

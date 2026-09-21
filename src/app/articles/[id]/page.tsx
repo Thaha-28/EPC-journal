@@ -45,15 +45,15 @@ export default async function ArticlePage({ params }: Props) {
     <div className="bg-[#F8F9FA] min-h-screen">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         <nav aria-label="Breadcrumb" className="text-xs text-[#767676] flex flex-wrap items-center gap-1.5">
-          <Link href="/" className="hover:text-[#005274] hover:underline underline-offset-4">
+          <Link href="/" className="hover:text-[#1C1D1E] hover:underline underline-offset-4">
             Home
           </Link>
           <span className="text-[#C2C3C6]">/</span>
-          <Link href="/archives" className="hover:text-[#005274] hover:underline underline-offset-4">
+          <Link href="/archives" className="hover:text-[#1C1D1E] hover:underline underline-offset-4">
             Archives
           </Link>
           <span className="text-[#C2C3C6]">/</span>
-          <Link href="/current" className="hover:text-[#005274] hover:underline underline-offset-4">
+          <Link href="/current" className="hover:text-[#1C1D1E] hover:underline underline-offset-4">
             {article.issueId ? `Issue ${article.issueId}` : "Current Issue"}
           </Link>
           <span className="text-[#C2C3C6]">/</span>
@@ -67,7 +67,7 @@ export default async function ArticlePage({ params }: Props) {
           <article className="journal-card overflow-hidden">
             {/* Top meta bar */}
             <div className="border-b border-[#EFEFF0] bg-[#F8F9FA] px-6 py-2.5 flex flex-wrap items-center gap-2 text-xs">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#005274] px-2.5 py-1 text-xs font-bold text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#1C1D1E] px-2.5 py-1 text-xs font-bold text-white">
                 <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
                 Open Access
               </span>
@@ -81,7 +81,7 @@ export default async function ArticlePage({ params }: Props) {
                 <span className="text-[#767676]">{new Date(article.datePublished).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
               )}
               <span className="ml-auto hidden sm:inline-flex items-center gap-1.5 text-[#767676]">
-                <span className="h-2 w-2 rounded-full bg-[#068853]"></span>
+                <span className="h-2 w-2 rounded-full bg-[#1C1D1E]"></span>
                 CC BY 4.0
               </span>
             </div>
@@ -103,14 +103,14 @@ export default async function ArticlePage({ params }: Props) {
                 {article.doi && (
                   <span className="inline-flex items-center gap-1.5">
                     <span className="font-bold text-[#414246]">DOI:</span>
-                    <a href={doiUrl!} target="_blank" rel="noopener noreferrer" className="font-medium text-[#005274] hover:underline break-all">
+                    <a href={doiUrl!} target="_blank" rel="noopener noreferrer" className="font-medium text-[#1C1D1E] hover:underline break-all">
                       {article.doi}
                     </a>
                   </span>
                 )}
                 <span className="hidden sm:inline text-[#D8D9DA]">|</span>
                 <span className="text-[#767676]">
-                  Published in <Link href="/current" className="text-[#005274] hover:underline">{siteConfig.name}</Link>
+                  Published in <Link href="/current" className="text-[#1C1D1E] hover:underline">{siteConfig.name}</Link>
                 </span>
               </div>
 
@@ -128,8 +128,8 @@ export default async function ArticlePage({ params }: Props) {
             {/* Abstract - journal standard boxed */}
             <div className="mx-6 sm:mx-8 mt-6 rounded border border-[#D8D9DA] bg-[#F8F9FA] p-0 overflow-hidden">
               <div className="border-b border-[#D8D9DA] bg-white px-4 py-2 flex items-center gap-2">
-                <span className="h-1 w-6 bg-[#005274] rounded-full"></span>
-                <h2 className="text-xs font-bold tracking-widest uppercase text-[#005274]">Abstract</h2>
+                <span className="h-1 w-6 bg-[#1C1D1E] rounded-full"></span>
+                <h2 className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Abstract</h2>
                 <span className="ml-auto text-xs text-[#767676]">{article.abstract ? `${article.abstract.split(" ").length} words` : ""}</span>
               </div>
               <div className="px-4 sm:px-5 py-4">
@@ -237,14 +237,14 @@ export default async function ArticlePage({ params }: Props) {
               </div>
 
               <div className="mt-8 rounded border border-[#D8D9DA] bg-[#F8F9FA] px-4 py-3 flex flex-wrap gap-2">
-                <span className="text-xs font-bold tracking-widest uppercase text-[#005274]">Files</span>
+                <span className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Files</span>
                 {(article.galleys ?? [{ label: "PDF", url: "#", fileType: "application/pdf" }]).map((g) => (
                   <a
                     key={g.label}
                     href={g.url}
                     target={g.url.startsWith("http") ? "_blank" : undefined}
                     rel={g.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-1.5 rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#005274] hover:bg-white hover:border-[#C2C3C6]"
+                    className="inline-flex items-center gap-1.5 rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#1C1D1E] hover:bg-white hover:border-[#C2C3C6]"
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -273,7 +273,7 @@ export default async function ArticlePage({ params }: Props) {
                     href={g.url}
                     target={g.url.startsWith("http") ? "_blank" : undefined}
                     rel={g.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center justify-between rounded border border-[#D8D9DA] bg-[#005274] px-3 py-2.5 text-sm font-semibold text-white hover:bg-[#003e57]"
+                    className="flex items-center justify-between rounded border border-[#D8D9DA] bg-[#1C1D1E] px-3 py-2.5 text-sm font-semibold text-white hover:bg-[#000000]"
                   >
                     <span className="flex items-center gap-2">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -309,7 +309,7 @@ export default async function ArticlePage({ params }: Props) {
                 </div>
                 {article.doi && (
                   <div className="pt-2 border-t border-[#EFEFF0] text-xs break-all">
-                    <span className="font-bold text-[#414246]">DOI</span> <a href={doiUrl!} target="_blank" rel="noopener noreferrer" className="text-[#005274] hover:underline">{article.doi}</a>
+                    <span className="font-bold text-[#414246]">DOI</span> <a href={doiUrl!} target="_blank" rel="noopener noreferrer" className="text-[#1C1D1E] hover:underline">{article.doi}</a>
                   </div>
                 )}
               </div>
@@ -318,19 +318,19 @@ export default async function ArticlePage({ params }: Props) {
             <ArticleSideTools article={article} />
 
             <div className="rounded border border-[#D8D9DA] bg-[#F8F9FA] p-4">
-              <p className="text-xs font-bold tracking-widest uppercase text-[#005274]">Issue</p>
+              <p className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Issue</p>
               <p className="mt-1 text-sm font-semibold text-[#1C1D1E]">{article.issueId ? `Issue ${article.issueId}` : "Current Issue"}</p>
               <div className="mt-3 flex gap-2">
-                <Link href="/current" className="flex-1 text-center rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#005274] hover:bg-[#F8F9FA]">
+                <Link href="/current" className="flex-1 text-center rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]">
                   View issue
                 </Link>
-                <Link href="/archives" className="flex-1 text-center rounded bg-[#005274] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#003e57]">
+                <Link href="/archives" className="flex-1 text-center rounded bg-[#1C1D1E] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#000000]">
                   All issues
                 </Link>
               </div>
             </div>
 
-            <Link href="/current" className="block text-center text-xs font-semibold text-[#005274] hover:underline underline-offset-4">
+            <Link href="/current" className="block text-center text-xs font-semibold text-[#1C1D1E] hover:underline underline-offset-4">
               Back to current issue
             </Link>
           </aside>

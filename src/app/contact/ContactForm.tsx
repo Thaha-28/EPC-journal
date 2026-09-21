@@ -59,7 +59,7 @@ export function ContactForm() {
             value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
             placeholder="Your name"
-            className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#005274] focus:ring-1 focus:ring-[#005274]/20"
+            className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#1C1D1E] focus:ring-1 focus:ring-[#1C1D1E]/20"
           />
         </label>
         <label className="block">
@@ -70,7 +70,7 @@ export function ContactForm() {
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             placeholder="you@university.edu"
-            className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#005274] focus:ring-1 focus:ring-[#005274]/20"
+            className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#1C1D1E] focus:ring-1 focus:ring-[#1C1D1E]/20"
           />
         </label>
       </div>
@@ -80,7 +80,7 @@ export function ContactForm() {
         <select
           value={form.reason}
           onChange={(e) => setForm((f) => ({ ...f, reason: e.target.value }))}
-          className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#005274] focus:ring-1 focus:ring-[#005274]/20"
+          className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#1C1D1E] focus:ring-1 focus:ring-[#1C1D1E]/20"
         >
           <option>General inquiry</option>
           <option>Submission question</option>
@@ -99,7 +99,7 @@ export function ContactForm() {
           value={form.message}
           onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
           placeholder="How can we help?"
-          className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#005274] focus:ring-1 focus:ring-[#005274]/20"
+          className="mt-1 w-full rounded border border-border bg-white px-3 py-2 text-sm outline-none focus:border-[#1C1D1E] focus:ring-1 focus:ring-[#1C1D1E]/20"
         />
       </label>
 

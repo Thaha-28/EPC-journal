@@ -16,15 +16,15 @@ export default async function ArchivesPage() {
   return (
     <JournalLayout>
       <div className="border-b border-border bg-[#f8f9fb] px-6 py-3 flex items-center gap-2 text-xs">
-        <Link href="/" className="text-[#0066cc] hover:underline">
+        <Link href="/" className="text-[#1C1D1E] hover:underline">
           Home
         </Link>
         <span className="text-muted-foreground">/</span>
-        <span className="font-medium text-[#005274]">Archives</span>
+        <span className="font-medium text-[#1C1D1E]">Archives</span>
       </div>
 
       <div className="px-6 sm:px-8 py-6">
-        <h1 className="font-display text-2xl font-bold text-[#005274]">Archives</h1>
+        <h1 className="font-display text-2xl font-bold text-[#1C1D1E]">Archives</h1>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">Browse all published issues. Each issue is a curated collection, continuously updated. Click any issue to explore its articles.</p>
       </div>
 
@@ -33,7 +33,7 @@ export default async function ArchivesPage() {
           <div key={issue.id} className="journal-card">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-white px-5 py-3">
               <div>
-                <h3 className="font-display text-base font-bold text-[#005274]">{issue.title}</h3>
+                <h3 className="font-display text-base font-bold text-[#1C1D1E]">{issue.title}</h3>
                 <p className="mt-1 text-xs text-muted-foreground">
                   {issue.datePublished ? new Date(issue.datePublished).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : ""} · {issue.articles.length} articles
                 </p>
@@ -48,13 +48,13 @@ export default async function ArchivesPage() {
                 <div key={a.id} className="px-5 py-3 flex gap-4 hover:bg-[#f8f9fb]">
                   <div className="hidden sm:block text-xs font-semibold text-muted-foreground pt-0.5">{a.id}</div>
                   <div className="flex-1 min-w-0">
-                    <Link href={`/articles/${a.id}`} className="text-sm font-semibold leading-5 text-[#005274] hover:text-[#0066cc] hover:underline underline-offset-4">
+                    <Link href={`/articles/${a.id}`} className="text-sm font-semibold leading-5 text-[#1C1D1E] hover:text-[#1C1D1E] hover:underline underline-offset-4">
                       {a.title}
                     </Link>
                     <p className="mt-1 text-xs text-muted-foreground">{a.authors.map((x) => x.fullName).join(", ")}</p>
                   </div>
                   <div className="hidden sm:block text-xs text-muted-foreground shrink-0 pt-1">{a.pages ?? "1-10"}</div>
-                  <Link href={`/articles/${a.id}`} className="shrink-0 text-xs font-semibold text-[#0066cc] hover:underline pt-1">
+                  <Link href={`/articles/${a.id}`} className="shrink-0 text-xs font-semibold text-[#1C1D1E] hover:underline pt-1">
                     View
                   </Link>
                 </div>

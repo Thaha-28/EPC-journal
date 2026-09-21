@@ -7,7 +7,7 @@ export function LeftSidebar() {
       <div className="journal-side-block">
         <div className="journal-side-block-header">Submit your research</div>
         <div className="journal-side-block-body">
-          <p className="text-sm leading-6 text-[#2F3032]">Publish diamond open access. No APCs. Single blind review with at least two reviewers.</p>
+          <p className="text-sm leading-6 text-[#2F3032]">Open access. Peer reviewed.</p>
           <Link
             href={getOjsUrl(siteConfig.ojsLinks.submission)}
             target="_blank"
@@ -16,7 +16,7 @@ export function LeftSidebar() {
           >
             Submit an article
           </Link>
-          <Link href="/author-guidelines" className="mt-2 block text-center text-xs font-semibold text-[#005274] hover:underline">
+          <Link href="/author-guidelines" className="mt-2 block text-center text-xs font-medium text-[#1C1D1E] hover:underline">
             View author guidelines
           </Link>
         </div>
@@ -34,7 +34,7 @@ export function LeftSidebar() {
               { label: "Open Access and Indexing", href: "/open-access" },
             ].map((i) => (
               <li key={i.href}>
-                <Link href={i.href} className="flex items-center justify-between px-4 py-2.5 text-[#1C1D1E] hover:bg-[#f8f9fb] hover:text-[#005274]">
+                <Link href={i.href} className="flex items-center justify-between px-4 py-2.5 text-[#1C1D1E] hover:bg-[#f8f9fb] hover:text-[#1C1D1E]">
                   <span>{i.label}</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="text-muted-foreground">
                     <path d="M9 6l6 6-6 6" />
@@ -78,13 +78,9 @@ export function RightSidebar() {
       <div className="journal-side-block">
         <div className="journal-side-block-header">Open access</div>
         <div className="journal-side-block-body">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#0e7a5a] px-2.5 py-1 text-xs font-bold text-white">
-            <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
-            Diamond OA
-          </div>
-          <p className="mt-2 text-sm leading-6 text-[#2F3032]">
-            No fees for authors or readers. All articles under{" "}
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+          <p className="text-sm leading-6 text-[#2F3032]">
+            All articles under{" "}
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" className="text-[#1C1D1E] underline">
               CC BY 4.0
             </a>
             .
@@ -98,11 +94,11 @@ export function RightSidebar() {
         <div className="journal-side-block-body">
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#005274]"></span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1C1D1E]"></span>
               Crossref
             </li>
             <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#005274]"></span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1C1D1E]"></span>
               Google Scholar
             </li>
             <li className="flex items-center gap-2">
@@ -110,7 +106,7 @@ export function RightSidebar() {
               DOAJ application pending
             </li>
             <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#005274]"></span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1C1D1E]"></span>
               OpenAIRE via OAI PMH
             </li>
           </ul>
@@ -135,14 +131,14 @@ export function RightSidebar() {
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Peer review</span>
-            <span className="font-medium">Single blind</span>
+            <span className="font-medium">Peer reviewed</span>
           </div>
           <div className="pt-2 text-xs text-muted-foreground border-t border-border mt-2">{siteConfig.contactEmail}</div>
         </div>
       </div>
 
-      <div className="journal-side-block border-[#c9a96e]/30 bg-[#fffaf0]">
-        <div className="journal-side-block-header bg-[#c9a96e] text-[#005274]">For reviewers</div>
+      <div className="journal-side-block">
+        <div className="journal-side-block-header">For reviewers</div>
         <div className="journal-side-block-body text-sm leading-6">
           <p>Reviewers are central to EPC. At least two reviewers per manuscript, constructive and timely feedback expected.</p>
           <Link href="/editorial-policies" className="mt-2 inline-block text-sm font-semibold hover:underline">
