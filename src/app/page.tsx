@@ -10,40 +10,40 @@ export default async function HomePage() {
 
   return (
     <JournalLayout>
-      {/* Minimal hero - clean, neat, no gradient */}
-      <div className="bg-white border-b border-[#EFEFF0]">
-        <div className="px-6 sm:px-8 py-10 sm:py-12 text-center">
-          <h1 className="font-display text-[30px] sm:text-[36px] font-bold leading-tight text-[#1C1D1E]">Environmental Processes and Chemistry</h1>
+      {/* Minimal hero - fitted background and text */}
+      <div className="bg-[#F8F9FA] border-b border-[#EFEFF0]">
+        <div className="mx-auto max-w-3xl px-6 sm:px-8 py-10 sm:py-12 text-center">
+          <h1 className="font-display text-[30px] sm:text-[36px] font-bold leading-tight tracking-tight text-[#1C1D1E]">Environmental Processes and Chemistry</h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#414246]">
             Open research on chemical, biological, and physical processes in natural and engineered environments.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/current" className="inline-flex items-center justify-center rounded border border-[#1C1D1E] bg-[#1C1D1E] px-6 py-2.5 text-sm font-semibold text-white hover:bg-black">
+            <Link href="/current" className="inline-flex items-center justify-center rounded bg-[#1C1D1E] px-6 py-2.5 text-sm font-semibold text-white hover:bg-black border border-[#1C1D1E]">
               View current issue
             </Link>
             <Link
               href={getOjsUrl(siteConfig.ojsLinks.submission)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded border border-[#D8D9DA] bg-white px-6 py-2.5 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]"
+              className="inline-flex items-center justify-center rounded bg-white px-6 py-2.5 text-sm font-semibold text-[#1C1D1E] hover:bg-white border border-[#D8D9DA]"
             >
               Submit an article
             </Link>
           </div>
-          <p className="mt-4 text-xs text-[#767676]">Online ISSN {siteConfig.issn.online} · Continuous publication</p>
+          <p className="mt-4 text-xs tracking-wide text-[#767676]">Online ISSN {siteConfig.issn.online} · Continuous publication</p>
         </div>
       </div>
 
-      {/* Minimal facts - very light, no colors */}
-      <div className="grid grid-cols-3 divide-x divide-[#EFEFF0] border-b border-[#EFEFF0] bg-[#F8F9FA] text-center">
+      {/* Minimal facts - fitted */}
+      <div className="grid grid-cols-3 divide-x divide-[#EFEFF0] border-y border-[#EFEFF0] bg-white text-center">
         <div className="px-4 py-3">
-          <p className="text-xs font-medium text-[#767676]">Published continuously</p>
+          <p className="text-xs font-medium text-[#1C1D1E]">Published continuously</p>
         </div>
         <div className="px-4 py-3">
-          <p className="text-xs font-medium text-[#767676]">Peer reviewed</p>
+          <p className="text-xs font-medium text-[#1C1D1E]">Peer reviewed</p>
         </div>
         <div className="px-4 py-3">
-          <p className="text-xs font-medium text-[#767676]">Open access</p>
+          <p className="text-xs font-medium text-[#1C1D1E]">Open access</p>
         </div>
       </div>
 

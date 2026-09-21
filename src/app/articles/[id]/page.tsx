@@ -137,9 +137,9 @@ export default async function ArticlePage({ params }: Props) {
               </div>
             </div>
 
-            {/* Article body - optimized for readability */}
+            {/* Article body - optimized for readability with fitted measure */}
             <div className="px-6 sm:px-8 py-6 sm:py-8">
-              <div className="prose-epc max-w-none">
+              <div className="prose-epc mx-auto max-w-[72ch]">
                 <h2>Introduction</h2>
                 <p>
                   Environmental processes at interfaces control the fate and transport of contaminants and nutrients. Understanding these mechanisms is essential for accurate prediction and effective remediation. This study examines key transformations under controlled laboratory and field conditions.
