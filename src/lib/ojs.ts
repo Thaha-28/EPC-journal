@@ -220,76 +220,136 @@ export async function getArticleById(id: string | number): Promise<OjsArticle | 
 }
 
 export async function getRecentArticles(limit = 6): Promise<OjsArticle[]> {
+  // Try live OJS submissions (published) first - more reliable for recent
+  const subsData = await ojsFetch<{ items: unknown[]; itemsMax: number }>(`/submissions?status=3&count=${limit}`);
+  if (subsData && Array.isArray(subsData.items) && subsData.items.length > 0) {
+    const mapped = subsData.items.map((s) => mapRawSubmission(s)).filter(Boolean) as OjsArticle[];
+    if (mapped.length > 0) return mapped.slice(0, limit);
+  }
+  // Fallback to issues' nested articles (for mock or when submissions API not available)
   const issues = await getIssues();
   const all = issues.flatMap((i) => i.articles);
-  return all.slice(0, limit);
+  if (all.length > 0) return all.slice(0, limit);
+  // Final fallback to mock
+  return mockIssues.flatMap((i) => i.articles).slice(0, limit);
+}
+
+// Helpers to handle localized strings and real OJS shapes
+function locString(value: unknown): string | undefined {
+  if (typeof value === "string") return value;
+  if (value && typeof value === "object") {
+    const o = value as Record<string, string>;
+    // Handle {en: "..."} or {en_US: "..."} or nested
+    if (typeof o.en === "string") return o.en;
+    if (typeof o.en_US === "string") return o.en_US;
+    const vals = Object.values(o).filter((v) => typeof v === "string" && v.length > 0) as string[];
+    if (vals.length > 0) return vals[0];
+  }
+  return undefined;
+}
+
+// helper used by templates, keep exported for future i18n
+export function locStringFromMultilingual(value: unknown): string | undefined {
+  return locString(value);
 }
 
 // Best effort mappers. Do not throw. Return null if unrecognizable.
 function mapRawIssue(raw: unknown): OjsIssue | null {
   if (!raw || typeof raw !== "object") return null;
   const r = raw as Record<string, unknown>;
-  // Direct mock shape already matches
-  if (typeof r.id === "number" && Array.isArray(r.articles)) {
-    return raw as OjsIssue;
-  }
-  // OJS API shape
-  const id = Number(r.id ?? r.issueId ?? 0);
+  // OJS API shape - handle localized title/description
+  const id = Number(r.id ?? r.issueId ?? r.issue_id ?? 0);
   if (!id) return null;
-  const volume = String(r.volume ?? r.vol ?? "");
-  const number = String(r.number ?? r.num ?? "");
-  const year = String(r.year ?? r.datePublished ?? "").slice(0, 4) || undefined;
-  const title =
-    (r.title as string) ||
-    (r.identification as string) ||
-    `Volume ${volume || "?"} ${number ? `Number ${number}` : ""}`.trim();
+  const volumeRaw = r.volume ?? r.vol;
+  const volume = volumeRaw != null ? String(volumeRaw) : "";
+  const numberRaw = r.number ?? r.num;
+  const number = numberRaw != null ? String(numberRaw) : "";
+  const yearRaw = r.year ?? r.datePublished ?? r.year;
+  const year = yearRaw != null ? String(yearRaw).slice(0, 4) : undefined;
+  const titleLoc = locString(r.title) ?? locString(r.identification) ?? `Volume ${volume || "?"} ${number ? `Number ${number}` : ""}`.trim();
+  const descLoc = locString(r.description) ?? (typeof r.description === "string" ? (r.description as string) : undefined);
+  const datePub = (r.datePublished as string) || (r.publishedAt as string) || (r.date_published as string) || undefined;
+  // Cover may be localized object or string
+  const coverRaw = r.coverImageUrl ?? r.coverUrl ?? r.coverImage;
+  let coverUrl: string | undefined;
+  if (typeof coverRaw === "string") coverUrl = coverRaw;
+  else if (coverRaw && typeof coverRaw === "object") coverUrl = locString(coverRaw);
+  // Articles may be in `articles` (mock or real single issue) or need to be fetched separately
+  let articles: OjsArticle[] = [];
+  if (Array.isArray(r.articles)) {
+    // Real OJS returns articles as submission objects with publications array
+    // Filter to only map those that look like submissions
+    articles = (r.articles.map((a) => mapRawSubmission(a, id)).filter(Boolean) as OjsArticle[]);
+  }
   return {
     id,
-    title: typeof title === "string" ? title : `Issue ${id}`,
+    title: titleLoc || `Issue ${id}`,
     volume: volume || undefined,
     number: number || undefined,
-    year,
-    datePublished: (r.datePublished as string) || (r.publishedAt as string) || undefined,
-    coverUrl: (r.coverImageUrl as string) || (r.coverUrl as string) || undefined,
-    description: (r.description as string) || undefined,
-    articles: Array.isArray(r.articles)
-      ? (r.articles.map((a) => mapRawSubmission(a, id)).filter(Boolean) as OjsArticle[])
-      : [],
+    year: year || undefined,
+    datePublished: datePub,
+    coverUrl,
+    description: descLoc,
+    articles,
   };
 }
 
 function mapRawSubmission(raw: unknown, issueId?: number): OjsArticle | null {
   if (!raw || typeof raw !== "object") return null;
   const r = raw as Record<string, unknown>;
-  const id = Number(r.id ?? r.submissionId ?? 0);
+  const id = Number(r.id ?? r.submissionId ?? r.submission_id ?? 0);
   if (!id) return null;
-  // Title may be localized object { en: "..." }
-  const rawTitle = r.title as unknown;
-  let title = "";
-  if (typeof rawTitle === "string") title = rawTitle;
-  else if (rawTitle && typeof rawTitle === "object") {
-    const t = rawTitle as Record<string, string>;
-    title = t.en ?? t.en_US ?? Object.values(t)[0] ?? "";
-  }
-  if (!title) title = (r.name as string) || `Article ${id}`;
 
-  const authorsRaw = (r.authors as unknown[]) ?? (r.authorString as unknown);
+  // Real OJS: submission has `publications` array, current publication contains title/abstract/authors
+  // Mock: submission has title/authors at top level
+  const pubs = r.publications as unknown[] | undefined;
+  const pub = Array.isArray(pubs) && pubs.length > 0 ? (pubs[0] as Record<string, unknown>) : null;
+  const source: Record<string, unknown> = pub ? { ...r, ...pub, id } as Record<string, unknown> : r;
+  // Preserve issueId from pub if available
+  const pubIssueId = pub ? Number((pub as Record<string, unknown>).issueId ?? (pub as Record<string, unknown>).issue_id ?? issueId ?? 0) : issueId;
+  const finalIssueId = pubIssueId || issueId;
+
+  // Title may be localized object { en: "..." } or fullTitle
+  const rawTitle = (source.title ?? source.fullTitle ?? r.title) as unknown;
+  let title = locString(rawTitle) ?? "";
+  if (!title) title = (r.name as string) || `Article ${id}`;
+  // Fallback to fullTitle if title empty
+  if (!title && source.fullTitle) title = locString(source.fullTitle) ?? title;
+
+  // Authors: may be in source.authors (publication) or r.authors
+  const authorsRaw = (source.authors as unknown[]) ?? (r.authors as unknown[]) ?? (r.authorString as unknown);
   let authors: OjsAuthor[] = [];
   if (Array.isArray(authorsRaw)) {
     authors = authorsRaw.map((a) => {
       if (typeof a === "string") return { fullName: a };
       if (a && typeof a === "object") {
         const o = a as Record<string, unknown>;
-        const given = (o.givenName as string) || (o.firstName as string) || "";
-        const family = (o.familyName as string) || (o.lastName as string) || "";
+        // givenName/familyName may be localized objects
+        const givenRaw = o.givenName ?? o.firstName;
+        const familyRaw = o.familyName ?? o.lastName;
+        const given = locString(givenRaw) ?? (typeof givenRaw === "string" ? (givenRaw as string) : "");
+        const family = locString(familyRaw) ?? (typeof familyRaw === "string" ? (familyRaw as string) : "");
         const full =
           (o.fullName as string) ||
           (o.name as string) ||
           [given, family].filter(Boolean).join(" ") ||
           "Author";
+        // affiliation may be string or affiliations array
+        let aff: string | undefined;
+        if (typeof o.affiliation === "string") aff = o.affiliation as string;
+        else if (Array.isArray(o.affiliations) && o.affiliations.length > 0) {
+          // affiliations array of objects with name
+          const affNames = (o.affiliations as Array<Record<string, unknown>>).map((affObj) => {
+            const n = affObj.name ?? affObj.affiliation;
+            return locString(n) ?? (typeof n === "string" ? n : "");
+          }).filter(Boolean);
+          if (affNames.length > 0) aff = affNames.join("; ");
+        } else if (o.affiliation && typeof o.affiliation === "object") {
+          aff = locString(o.affiliation);
+        }
         return {
           fullName: full,
-          affiliation: (o.affiliation as string) || undefined,
+          affiliation: aff,
           orcid: (o.orcid as string) || undefined,
         };
       }
@@ -298,16 +358,67 @@ function mapRawSubmission(raw: unknown, issueId?: number): OjsArticle | null {
   } else if (typeof authorsRaw === "string") {
     authors = (authorsRaw as string).split(";").map((s: string) => ({ fullName: s.trim() })).filter((a: { fullName: string }) => Boolean(a.fullName));
   }
-  if (authors.length === 0) authors = [{ fullName: "EPC Authors" }];
-
-  const doi = (r.doi as string) || (r.pubId as string) || undefined;
-  const abstractRaw = r.abstract as unknown;
-  let abstract: string | undefined;
-  if (typeof abstractRaw === "string") abstract = abstractRaw;
-  else if (abstractRaw && typeof abstractRaw === "object") {
-    const a = abstractRaw as Record<string, string>;
-    abstract = a.en ?? a.en_US ?? Object.values(a)[0];
+  if (authors.length === 0) {
+    // Fallback to authorsString if present (e.g., "A. Rahman, S. L. Chen")
+    const authStr = (source.authorsString ?? r.authorsString) as unknown;
+    if (typeof authStr === "string" && authStr.length > 0) {
+      // authorsString may be "A. Rahman, S. L. Chen (Author)" - strip parenthetical
+      const cleaned = authStr.replace(/\s*\(.*?\)\s*/g, "");
+      authors = cleaned.split(",").map((s: string) => ({ fullName: s.trim() })).filter((a) => a.fullName.length > 0);
+    } else {
+      authors = [{ fullName: "EPC Authors" }];
+    }
   }
+
+  const doi =
+    (source.doi as string) ||
+    (source["pub-id::doi"] as string) ||
+    (r.doi as string) ||
+    (r.pubId as string) ||
+    // Check doiObject
+    ((source.doiObject as Record<string, unknown>)?.doi as string) ||
+    undefined;
+
+  const abstractRaw = (source.abstract ?? r.abstract) as unknown;
+  let abstract: string | undefined = locString(abstractRaw);
+  if (!abstract && typeof abstractRaw === "string") abstract = abstractRaw;
+
+  // Keywords may be {en: []} or array
+  let keywords: string[] | undefined;
+  const kwRaw = source.keywords ?? r.keywords;
+  if (Array.isArray(kwRaw)) keywords = kwRaw as string[];
+  else if (kwRaw && typeof kwRaw === "object") {
+    const kwObj = kwRaw as Record<string, unknown>;
+    const enKw = kwObj.en ?? kwObj.en_US;
+    if (Array.isArray(enKw)) keywords = enKw as string[];
+    else if (typeof enKw === "string") keywords = [enKw];
+  }
+
+  const datePublished =
+    locString(source.datePublished) ??
+    (source.datePublished as string) ??
+    (r.datePublished as string) ??
+    (r.publishedAt as string) ??
+    undefined;
+  // Pages may be localized object {en: "1-14"}
+  const pagesRaw = source.pages ?? r.pages;
+  let pages: string | undefined = locString(pagesRaw);
+  if (!pages && typeof pagesRaw === "string") pages = pagesRaw;
+
+  const section = (source.section as string) ?? (r.section as string) ?? undefined;
+  // Section may be sectionId, need to map to name? For now, fallback to "Research Articles"
+  const sectionName = typeof section === "string" ? section : undefined;
+
+  const galleysRaw = source.galleys ?? r.galleys;
+  let galleys: { label: string; url: string; fileType?: string }[] | undefined;
+  if (Array.isArray(galleysRaw)) {
+    galleys = (galleysRaw as Array<Record<string, unknown>>).map((g) => ({
+      label: String(g.label ?? g.name ?? "PDF"),
+      url: String(g.url ?? g.galleyUrl ?? (g as Record<string, unknown>).urlPublished ?? "#"),
+      fileType: (g.fileType as string) || (g.mimetype as string) || undefined,
+    }));
+  }
+  if (!galleys || galleys.length === 0) galleys = [{ label: "PDF", url: "#", fileType: "application/pdf" }];
 
   return {
     id,
@@ -315,17 +426,11 @@ function mapRawSubmission(raw: unknown, issueId?: number): OjsArticle | null {
     abstract,
     authors,
     doi,
-    keywords: Array.isArray(r.keywords) ? (r.keywords as string[]) : undefined,
-    datePublished: (r.datePublished as string) || (r.publishedAt as string) || undefined,
-    section: (r.section as string) || undefined,
-    pages: (r.pages as string) || undefined,
-    galleys: Array.isArray(r.galleys)
-      ? (r.galleys as Array<Record<string, unknown>>).map((g) => ({
-          label: String(g.label ?? g.name ?? "PDF"),
-          url: String(g.url ?? g.galleyUrl ?? "#"),
-          fileType: (g.fileType as string) || undefined,
-        }))
-      : [{ label: "PDF", url: "#", fileType: "application/pdf" }],
-    issueId,
+    keywords,
+    datePublished,
+    section: sectionName,
+    pages,
+    galleys,
+    issueId: finalIssueId as number | undefined,
   };
 }

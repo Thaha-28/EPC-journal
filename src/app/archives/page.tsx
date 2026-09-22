@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getIssues } from "@/lib/ojs";
 import { JournalLayout } from "@/components/Sidebar";
@@ -45,18 +46,28 @@ export default async function ArchivesPage() {
             {issue.description && <p className="px-5 py-3 text-sm leading-6 text-muted-foreground border-b border-border bg-[#f8f9fb]">{issue.description}</p>}
             <div className="divide-y divide-border">
               {issue.articles.map((a) => (
-                <div key={a.id} className="px-5 py-3 flex gap-4 hover:bg-[#f8f9fb]">
-                  <div className="hidden sm:block text-xs font-semibold text-muted-foreground pt-0.5">{a.id}</div>
+                <div key={a.id} className="px-5 py-4 flex gap-4 hover:bg-[#f8f9fb]">
+                  <div className="hidden sm:block text-xs font-semibold text-muted-foreground pt-1">{a.id}</div>
                   <div className="flex-1 min-w-0">
-                    <Link href={`/articles/${a.id}`} className="text-sm font-semibold leading-5 text-[#1C1D1E] hover:text-[#1C1D1E] hover:underline underline-offset-4">
+                    <Link href={`/articles/${a.id}`} className="text-sm font-semibold leading-5 text-[#1C1D1E] hover:text-[#1C1D1E] hover:underline underline-offset-4 line-clamp-2">
                       {a.title}
                     </Link>
                     <p className="mt-1 text-xs text-muted-foreground">{a.authors.map((x) => x.fullName).join(", ")}</p>
+                    {a.abstract && <p className="mt-1.5 text-xs leading-5 text-[#414246] line-clamp-2">{a.abstract}</p>}
+                    <div className="mt-2 flex items-center gap-3 text-xs">
+                      <span className="text-muted-foreground">{a.pages ?? "1-10"}</span>
+                      <Link href={`/articles/${a.id}`} className="font-semibold text-[#1C1D1E] hover:underline">
+                        View
+                      </Link>
+                      {a.doi && <span className="hidden sm:inline text-muted-foreground font-mono text-[11px]">{a.doi}</span>}
+                    </div>
                   </div>
-                  <div className="hidden sm:block text-xs text-muted-foreground shrink-0 pt-1">{a.pages ?? "1-10"}</div>
-                  <Link href={`/articles/${a.id}`} className="shrink-0 text-xs font-semibold text-[#1C1D1E] hover:underline pt-1">
-                    View
-                  </Link>
+                  <div className="hidden sm:flex shrink-0 flex-col items-center gap-1">
+                    <div className="h-[76px] w-[102px] overflow-hidden rounded border border-[#EFEFF0] bg-white flex items-center justify-center">
+                      <Image src="/emblem-EPC.jpeg" alt="Graphical abstract" width={102} height={76} className="h-full w-full object-cover" />
+                    </div>
+                    <span className="text-[10px] font-semibold tracking-widest uppercase text-[#767676]">Graphical abstract</span>
+                  </div>
                 </div>
               ))}
             </div>

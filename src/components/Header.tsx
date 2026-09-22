@@ -27,15 +27,10 @@ export function Header() {
             </Link>
 
             <div className="hidden lg:flex items-center gap-2 shrink-0 ml-auto">
-              <Link href={getOjsUrl(siteConfig.ojsLinks.login)} target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm">
+              <Link href="/login" className="btn-ghost text-sm">
                 Log in / Register
               </Link>
-              <Link
-                href={getOjsUrl(siteConfig.ojsLinks.submission)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-sm"
-              >
+              <Link href="/submit" className="btn-primary text-sm">
                 Submit an article
               </Link>
             </div>
@@ -146,10 +141,10 @@ export function Header() {
               </Link>
             ))}
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <Link href={getOjsUrl(siteConfig.ojsLinks.login)} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded border border-[#D8D9DA] bg-white px-4 py-2.5 text-sm font-semibold text-[#1C1D1E]">
+              <Link href="/login" className="inline-flex justify-center rounded border border-[#D8D9DA] bg-white px-4 py-2.5 text-sm font-semibold text-[#1C1D1E]">
                 Log in
               </Link>
-              <Link href={getOjsUrl(siteConfig.ojsLinks.submission)} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded bg-[#1C1D1E] px-4 py-2.5 text-sm font-semibold text-white">
+              <Link href="/submit" className="inline-flex justify-center rounded bg-[#1C1D1E] px-4 py-2.5 text-sm font-semibold text-white">
                 Submit
               </Link>
             </div>

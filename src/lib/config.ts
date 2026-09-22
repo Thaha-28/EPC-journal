@@ -16,6 +16,10 @@ export const siteConfig = {
     register: "/index.php/epc/user/register",
     submission: "/index.php/epc/submission/wizard",
     search: "/index.php/epc/search",
+    dashboard: "/index.php/epc/dashboard",
+    mySubmissions: "/index.php/epc/dashboard/mySubmissions",
+    profile: "/index.php/epc/user/profile",
+    editorial: "/index.php/epc/dashboard/editorial",
   },
   issn: {
     online: "XXXX-XXXX",

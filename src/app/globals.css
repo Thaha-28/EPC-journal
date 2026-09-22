@@ -91,6 +91,13 @@ a:visited {
   color: #1C1D1E;
 }
 
+/* Ensure black buttons keep white text even when visited */
+.btn-primary,
+.btn-primary:visited,
+a.btn-primary:visited {
+  color: #fff !important;
+}
+
 :focus-visible {
   outline: 2px solid #1C1D1E;
   outline-offset: 2px;

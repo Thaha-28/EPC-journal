@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { JournalLayout } from "@/components/Sidebar";
-import { getOjsUrl, siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Author Guidelines",
@@ -29,10 +28,10 @@ export default function AuthorGuidelinesPage() {
           <p className="text-sm font-semibold text-[#1C1D1E]">Submit your manuscript</p>
           <p className="mt-1 text-sm leading-6 text-[#414246]">Submission, status tracking, revisions, and proofs are handled securely in the online system.</p>
           <div className="mt-3 flex flex-wrap gap-2">
-            <Link href={getOjsUrl(siteConfig.ojsLinks.submission)} target="_blank" rel="noopener noreferrer" className="rounded bg-[#1C1D1E] px-4 py-2 text-sm font-semibold text-white hover:bg-black">
+            <Link href="/submit" className="rounded bg-[#1C1D1E] px-4 py-2 text-sm font-semibold text-white hover:bg-black">
               Start submission
             </Link>
-            <Link href={getOjsUrl(siteConfig.ojsLinks.register)} target="_blank" rel="noopener noreferrer" className="rounded border border-[#D8D9DA] bg-white px-4 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]">
+            <Link href="/register" className="rounded border border-[#D8D9DA] bg-white px-4 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]">
               Register account
             </Link>
           </div>

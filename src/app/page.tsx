@@ -1,15 +1,16 @@
 import Link from "next/link";
-import { getCurrentIssue, getRecentArticles } from "@/lib/ojs";
+import Image from "next/image";
+import { getRecentArticles } from "@/lib/ojs";
 import { JournalLayout } from "@/components/Sidebar";
-import { getOjsUrl, siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config";
 
 export const revalidate = 600;
 
 export default async function HomePage() {
-  const [currentIssue, recent] = await Promise.all([getCurrentIssue(), getRecentArticles(6)]);
+  const recent = await getRecentArticles(6);
 
   return (
-    <JournalLayout>
+    <JournalLayout withRightSidebar>
       {/* Minimal hero - fitted background and text */}
       <div className="bg-[#F8F9FA] border-b border-[#EFEFF0]">
         <div className="mx-auto max-w-3xl px-6 sm:px-8 py-10 sm:py-12 text-center">
@@ -18,15 +19,10 @@ export default async function HomePage() {
             Open research on chemical, biological, and physical processes in natural and engineered environments.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/current" className="inline-flex items-center justify-center rounded bg-[#1C1D1E] px-6 py-2.5 text-sm font-semibold text-white hover:bg-black border border-[#1C1D1E]">
+            <Link href="/current" className="inline-flex items-center justify-center rounded bg-[#1C1D1E] px-6 py-2.5 text-sm font-semibold !text-white visited:!text-white hover:bg-black border border-[#1C1D1E]">
               View current issue
             </Link>
-            <Link
-              href={getOjsUrl(siteConfig.ojsLinks.submission)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded bg-white px-6 py-2.5 text-sm font-semibold text-[#1C1D1E] hover:bg-white border border-[#D8D9DA]"
-            >
+            <Link href="/submit" className="inline-flex items-center justify-center rounded bg-white px-6 py-2.5 text-sm font-semibold text-[#1C1D1E] hover:bg-white border border-[#D8D9DA]">
               Submit an article
             </Link>
           </div>
@@ -92,25 +88,33 @@ export default async function HomePage() {
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {recent.slice(0, 4).map((a) => (
-            <article key={a.id} className="group rounded border border-[#EFEFF0] bg-white p-4 hover:border-[#D8D9DA] transition">
-              <div className="flex items-center gap-2 text-xs">
-                <span className="rounded bg-[#F8F9FA] border border-[#EFEFF0] px-2 py-0.5 text-xs font-medium text-[#414246]">{a.section ?? "Research Article"}</span>
-                <span className="text-[#767676]">{a.datePublished ? new Date(a.datePublished).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : ""}</span>
-              </div>
-              <Link href={`/articles/${a.id}`} className="mt-2.5 block">
-                <h3 className="font-display text-[15px] font-semibold leading-5 text-[#1C1D1E] group-hover:underline underline-offset-4 line-clamp-3">{a.title}</h3>
-              </Link>
-              <p className="mt-1.5 text-sm text-[#767676] line-clamp-1">{a.authors.map((x) => x.fullName).join(", ")}</p>
-              {a.abstract && <p className="mt-2 text-sm leading-6 text-[#2F3032] line-clamp-3">{a.abstract}</p>}
-              <div className="mt-3 flex items-center gap-3 text-xs">
-                <Link href={`/articles/${a.id}`} className="font-medium text-[#1C1D1E] hover:underline underline-offset-4">
-                  Read article
+            <article key={a.id} className="group flex gap-4 rounded border border-[#EFEFF0] bg-white p-4 hover:border-[#D8D9DA] transition">
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="rounded bg-[#F8F9FA] border border-[#EFEFF0] px-2 py-0.5 text-xs font-medium text-[#414246]">{a.section ?? "Research Article"}</span>
+                  <span className="text-[#767676]">{a.datePublished ? new Date(a.datePublished).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : ""}</span>
+                </div>
+                <Link href={`/articles/${a.id}`} className="mt-2.5 block">
+                  <h3 className="font-display text-[15px] font-semibold leading-5 text-[#1C1D1E] group-hover:underline underline-offset-4 line-clamp-3">{a.title}</h3>
                 </Link>
-                {a.doi && (
-                  <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer" className="text-[#767676] hover:text-[#1C1D1E] hover:underline">
-                    {a.doi}
-                  </a>
-                )}
+                <p className="mt-1.5 text-sm text-[#767676] line-clamp-1">{a.authors.map((x) => x.fullName).join(", ")}</p>
+                {a.abstract && <p className="mt-2 text-sm leading-6 text-[#2F3032] line-clamp-3">{a.abstract}</p>}
+                <div className="mt-3 flex items-center gap-3 text-xs">
+                  <Link href={`/articles/${a.id}`} className="font-medium text-[#1C1D1E] hover:underline underline-offset-4">
+                    Read article
+                  </Link>
+                  {a.doi && (
+                    <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer" className="text-[#767676] hover:text-[#1C1D1E] hover:underline">
+                      {a.doi}
+                    </a>
+                  )}
+                </div>
+              </div>
+              <div className="hidden sm:flex shrink-0 flex-col items-center gap-1">
+                <div className="h-[84px] w-[112px] overflow-hidden rounded border border-[#EFEFF0] bg-[#F8F9FA] flex items-center justify-center">
+                  <Image src="/emblem-EPC.jpeg" alt="Graphical abstract" width={112} height={84} className="h-full w-full object-cover" />
+                </div>
+                <span className="text-[10px] font-semibold tracking-widest uppercase text-[#767676]">Graphical abstract</span>
               </div>
             </article>
           ))}
@@ -147,12 +151,7 @@ export default async function HomePage() {
           <div className="rounded border border-[#D8D9DA] bg-white p-5">
             <p className="text-sm font-semibold text-[#1C1D1E]">Ready to submit</p>
             <p className="mt-2 text-sm leading-6 text-[#414246]">Manuscripts are handled through our online submission system for secure peer review and editorial tracking.</p>
-            <Link
-              href={getOjsUrl(siteConfig.ojsLinks.submission)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 flex justify-center rounded bg-[#1C1D1E] px-4 py-2.5 text-sm font-semibold text-white hover:bg-black"
-            >
+            <Link href="/submit" className="mt-4 flex justify-center rounded bg-[#1C1D1E] px-4 py-2.5 text-sm font-semibold !text-white visited:!text-white hover:bg-black">
               Start submission
             </Link>
             <Link href="/author-guidelines" className="mt-2 flex justify-center rounded border border-[#D8D9DA] bg-white px-4 py-2.5 text-sm font-medium text-[#1C1D1E] hover:bg-[#F8F9FA]">

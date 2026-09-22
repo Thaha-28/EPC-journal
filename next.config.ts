@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.epc-journal.org",
       },
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "8080",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8080",
+      },
     ],
   },
   async headers() {
@@ -29,7 +39,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://ojs.epc-journal.org https://*.epc-journal.org",
+              "connect-src 'self' https://ojs.epc-journal.org https://*.epc-journal.org http://127.0.0.1:8080 http://localhost:8080",
               "frame-ancestors 'none'",
             ].join("; "),
           },

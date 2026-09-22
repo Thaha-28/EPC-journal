@@ -4,21 +4,21 @@ import { siteConfig, getOjsUrl } from "@/lib/config";
 export function LeftSidebar() {
   return (
     <div className="space-y-4">
-      <div className="journal-side-block">
-        <div className="journal-side-block-header">Submit your research</div>
-        <div className="journal-side-block-body">
-          <p className="text-sm leading-6 text-[#2F3032]">Open access. Peer reviewed.</p>
+      <div className="journal-side-block border-2 border-[#1C1D1E]/10 shadow-sm">
+        <div className="journal-side-block-header !bg-[#1C1D1E] !text-white !border-[#1C1D1E] text-sm tracking-wide py-3">Submit your research</div>
+        <div className="journal-side-block-body !p-6 bg-[#F8F9FA]">
+          <p className="text-[15px] font-semibold leading-6 text-[#1C1D1E]">Open access. Peer reviewed.</p>
+          <p className="mt-1.5 text-sm leading-6 text-[#414246]">Rigorous peer review, rapid publication, and global visibility under CC BY 4.0.</p>
           <Link
-            href={getOjsUrl(siteConfig.ojsLinks.submission)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary mt-3 w-full text-xs uppercase tracking-wide"
+            href="/submit"
+            className="btn-primary mt-4 w-full !py-3 text-sm font-bold uppercase tracking-wide !text-white visited:!text-white shadow-sm"
           >
             Submit an article
           </Link>
-          <Link href="/author-guidelines" className="mt-2 block text-center text-xs font-medium text-[#1C1D1E] hover:underline">
-            View author guidelines
+          <Link href="/author-guidelines" className="mt-3 block text-center text-sm font-medium text-[#1C1D1E] hover:underline">
+            View author guidelines →
           </Link>
+          <p className="mt-3 text-xs leading-4 text-[#767676] text-center">Via OJS — account creation, wizard, and tracking included.</p>
         </div>
       </div>
 
@@ -150,24 +150,26 @@ export function RightSidebar() {
   );
 }
 
-export function JournalLayout({ children }: { children: React.ReactNode }) {
+export function JournalLayout({ children, withRightSidebar = false }: { children: React.ReactNode; withRightSidebar?: boolean }) {
   return (
     <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
-      <div className="grid gap-6 lg:grid-cols-[220px_1fr_300px]">
+      <div className={`grid gap-6 ${withRightSidebar ? "lg:grid-cols-[220px_1fr_300px]" : "lg:grid-cols-[220px_1fr]"}`}>
         <aside className="hidden lg:block">
           <LeftSidebar />
         </aside>
         <div className="min-w-0">
           <div className="journal-card">{children}</div>
         </div>
-        <aside className="hidden lg:block">
-          <RightSidebar />
-        </aside>
+        {withRightSidebar && (
+          <aside className="hidden lg:block">
+            <RightSidebar />
+          </aside>
+        )}
       </div>
 
-      <div className="lg:hidden mt-6 grid gap-4 sm:grid-cols-2">
+      <div className={`lg:hidden mt-6 grid gap-4 ${withRightSidebar ? "sm:grid-cols-2" : "grid-cols-1"}`}>
         <LeftSidebar />
-        <RightSidebar />
+        {withRightSidebar && <RightSidebar />}
       </div>
     </div>
   );
