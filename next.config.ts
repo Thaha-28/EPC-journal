@@ -13,14 +13,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "epc-ojs.onrender.com",
-      },
-      {
-        protocol: "https",
-        hostname: "**.onrender.com",
-      },
-      {
-        protocol: "https",
         hostname: "epc-ojs-production.up.railway.app",
       },
       {
@@ -55,7 +47,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://ojs.epc-journal.org https://*.epc-journal.org https://epc-ojs.onrender.com https://*.onrender.com https://epc-ojs-production.up.railway.app https://*.up.railway.app http://127.0.0.1:8080 http://localhost:8080",
+              "connect-src 'self' https://ojs.epc-journal.org https://*.epc-journal.org https://epc-ojs-production.up.railway.app https://*.up.railway.app http://127.0.0.1:8080 http://localhost:8080",
               "frame-ancestors 'none'",
             ].join("; "),
           },

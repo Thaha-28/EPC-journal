@@ -131,12 +131,12 @@ export default async function HomePage() {
       <div className="border-t border-[#EFEFF0] bg-[#F8F9FA] px-6 sm:px-8 py-6">
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold text-[#1C1D1E]">A venue for rigorous environmental research</h3>
+            <h3 className="text-sm font-semibold text-[#1C1D1E]">A venue for impactful environmental research</h3>
             <p className="mt-2 text-sm leading-7 text-[#414246]">All articles are peer reviewed and indexed for discoverability. Our editorial process follows COPE and WAME guidance to ensure transparency and integrity.</p>
             <div className="mt-4 grid grid-cols-3 gap-3 text-center">
               <div className="rounded border border-[#EFEFF0] bg-white p-3">
-                <p className="text-sm font-semibold text-[#1C1D1E]">Rigorous</p>
-                <p className="text-xs text-[#767676]">Peer reviewed</p>
+                <p className="text-sm font-semibold text-[#1C1D1E]">Expert Review</p>
+                <p className="text-xs text-[#767676]">2+ reviewers</p>
               </div>
               <div className="rounded border border-[#EFEFF0] bg-white p-3">
                 <p className="text-sm font-semibold text-[#1C1D1E]">Open</p>

@@ -4,16 +4,39 @@ import { siteConfig, getOjsUrl } from "@/lib/config";
 export function LeftSidebar() {
   return (
     <div className="space-y-4">
-      <div className="journal-side-block border-2 border-[#1C1D1E]/10 shadow-sm">
-        <div className="journal-side-block-header !bg-[#1C1D1E] !text-white !border-[#1C1D1E] text-sm tracking-wide py-3">Submit your research</div>
-        <div className="journal-side-block-body !p-6 bg-[#F8F9FA]">
-          <p className="text-[15px] font-semibold leading-6 text-[#1C1D1E]">Open access. Peer reviewed.</p>
-          <p className="mt-1.5 text-sm leading-6 text-[#414246]">Rigorous peer review, rapid publication, and global visibility under CC BY 4.0.</p>
+      <div className="journal-side-block border-2 border-[#1C1D1E]/10 shadow-sm overflow-hidden">
+        <div className="journal-side-block-header !bg-[#1C1D1E] !text-white !border-[#1C1D1E] text-sm tracking-wide py-3 flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded bg-white text-[#1C1D1E]">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>
+          </span>
+          Submit your research
+        </div>
+        <div className="journal-side-block-body !p-6 bg-gradient-to-b from-[#F8F9FA] to-white">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#1C1D1E] px-2.5 py-1 text-xs font-bold text-white">Open access</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-white border border-[#EFEFF0] px-2.5 py-1 text-xs font-semibold text-[#1C1D1E]">Peer reviewed</span>
+          </div>
+          <p className="mt-3 text-[15px] font-bold leading-6 text-[#1C1D1E]">Expert peer review. Rapid decisions.</p>
+          <p className="mt-1.5 text-sm leading-6 text-[#414246]">Constructive review by 2+ experts, 21 days avg. to first decision, and global visibility under CC BY 4.0.</p>
+          <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+            <div className="rounded bg-white border border-[#EFEFF0] p-2">
+              <p className="text-sm font-bold text-[#1C1D1E]">2+</p>
+              <p className="text-[11px] text-[#767676]">Reviewers</p>
+            </div>
+            <div className="rounded bg-white border border-[#EFEFF0] p-2">
+              <p className="text-sm font-bold text-[#1C1D1E]">21d</p>
+              <p className="text-[11px] text-[#767676]">To decision</p>
+            </div>
+            <div className="rounded bg-white border border-[#EFEFF0] p-2">
+              <p className="text-sm font-bold text-[#1C1D1E]">CC BY</p>
+              <p className="text-[11px] text-[#767676]">Open</p>
+            </div>
+          </div>
           <Link
             href="/submit"
-            className="btn-primary mt-4 w-full !py-3 text-sm font-bold uppercase tracking-wide !text-white visited:!text-white shadow-sm"
+            className="btn-primary mt-4 w-full !py-3.5 text-sm font-bold uppercase tracking-wide !text-white visited:!text-white shadow-sm"
           >
-            Submit an article
+            Submit an article →
           </Link>
           <Link href="/author-guidelines" className="mt-3 block text-center text-sm font-medium text-[#1C1D1E] hover:underline">
             View author guidelines →
