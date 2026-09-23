@@ -12,26 +12,7 @@ export function LeftSidebar() {
           Submit your research
         </div>
         <div className="journal-side-block-body !p-6 bg-gradient-to-b from-[#F8F9FA] to-white">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#1C1D1E] px-2.5 py-1 text-xs font-bold text-white">Open access</span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-white border border-[#EFEFF0] px-2.5 py-1 text-xs font-semibold text-[#1C1D1E]">Peer reviewed</span>
-          </div>
-          <p className="mt-3 text-[15px] font-bold leading-6 text-[#1C1D1E]">Expert peer review. Rapid decisions.</p>
-          <p className="mt-1.5 text-sm leading-6 text-[#414246]">Constructive review by 2+ experts, 21 days avg. to first decision, and global visibility under CC BY 4.0.</p>
-          <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-            <div className="rounded bg-white border border-[#EFEFF0] p-2">
-              <p className="text-sm font-bold text-[#1C1D1E]">2+</p>
-              <p className="text-[11px] text-[#767676]">Reviewers</p>
-            </div>
-            <div className="rounded bg-white border border-[#EFEFF0] p-2">
-              <p className="text-sm font-bold text-[#1C1D1E]">21d</p>
-              <p className="text-[11px] text-[#767676]">To decision</p>
-            </div>
-            <div className="rounded bg-white border border-[#EFEFF0] p-2">
-              <p className="text-sm font-bold text-[#1C1D1E]">CC BY</p>
-              <p className="text-[11px] text-[#767676]">Open</p>
-            </div>
-          </div>
+          <p className="text-[15px] font-bold leading-6 text-[#1C1D1E]">Expert peer review. Rapid decisions.</p>
           <Link
             href="/submit"
             className="btn-primary mt-4 w-full !py-3.5 text-sm font-bold uppercase tracking-wide !text-white visited:!text-white shadow-sm"
@@ -99,45 +80,6 @@ export function RightSidebar() {
   return (
     <div className="space-y-4">
       <div className="journal-side-block">
-        <div className="journal-side-block-header">Open access</div>
-        <div className="journal-side-block-body">
-          <p className="text-sm leading-6 text-[#2F3032]">
-            All articles under{" "}
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" className="text-[#1C1D1E] underline">
-              CC BY 4.0
-            </a>
-            .
-          </p>
-          <p className="mt-2 text-xs text-muted-foreground">Crossref DOIs, ORCID, funding metadata.</p>
-        </div>
-      </div>
-
-      <div className="journal-side-block">
-        <div className="journal-side-block-header">Abstracting and indexing</div>
-        <div className="journal-side-block-body">
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1C1D1E]"></span>
-              Crossref
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1C1D1E]"></span>
-              Google Scholar
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
-              DOAJ application pending
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1C1D1E]"></span>
-              OpenAIRE via OAI PMH
-            </li>
-          </ul>
-          <p className="mt-3 text-xs leading-5 text-muted-foreground">The journal supports OAI PMH for harvesting by indexers and aggregators.</p>
-        </div>
-      </div>
-
-      <div className="journal-side-block">
         <div className="journal-side-block-header">Journal information</div>
         <div className="journal-side-block-body space-y-2 text-sm">
           <div className="flex justify-between">
@@ -151,10 +93,6 @@ export function RightSidebar() {
           <div className="flex justify-between">
             <span className="text-muted-foreground">Frequency</span>
             <span className="font-medium">Continuous</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Peer review</span>
-            <span className="font-medium">Peer reviewed</span>
           </div>
           <div className="pt-2 text-xs text-muted-foreground border-t border-border mt-2">{siteConfig.contactEmail}</div>
         </div>

@@ -96,13 +96,11 @@ export function Footer() {
 
       <div className="bg-[#141414] text-white">
         <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
-          <p className="text-white">Copyright 2026 {siteConfig.publisher}. Open access under CC BY 4.0. Published continuously.</p>
+          <p className="text-white">Copyright 2026 {siteConfig.publisher}. Published continuously.</p>
           <p className="flex items-center gap-3 shrink-0 text-white">
             <Link href="/sitemap.xml" className="text-white hover:text-white hover:underline">
               Sitemap
             </Link>
-            <span className="text-white">|</span>
-            <span className="text-white">Indexed via Crossref and DOAJ</span>
             <span className="text-white">|</span>
             <Link href="/editorial-policies" className="text-white hover:text-white hover:underline">
               Privacy

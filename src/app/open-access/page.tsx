@@ -27,7 +27,7 @@ export default function OpenAccessPage() {
         <h2>Open access</h2>
         <p>All articles are open access and free to read immediately on publication under Creative Commons Attribution 4.0 International (CC BY 4.0). Authors retain copyright.</p>
         <h3>Licensing</h3>
-        <p>Articles are published under CC BY 4.0.</p>
+        <p>See the license stated in the publication details of each article.</p>
         <h2>Indexing status</h2>
         <p>The journal registers DOIs via Crossref and supports harvesting via OAI PMH.</p>
         <div className="overflow-hidden rounded border border-[#EFEFF0]">

@@ -52,9 +52,9 @@ export default function AuthorGuidelinesPage() {
           <h3>References and units</h3>
           <p>Use consistent citation style. Use SI units. Show uncertainties where relevant. Report detection limits and QA QC.</p>
           <h2>Peer review</h2>
-          <p>Peer review is conducted by at least two independent reviewers, editor makes final decision. Typical timeline: first decision within 4 to 6 weeks.</p>
+          <p>Peer review is conducted by at least two independent reviewers, editor makes final decision. Typical timeline: first decision within 4 to 6 weeks. See our <Link href="/editorial-policies">editorial policies</Link> for the full review process.</p>
           <h2>After acceptance</h2>
-          <p>Copyediting is light. Proofs are sent to corresponding authors. Articles are published with Crossref DOIs under CC BY 4.0.</p>
+          <p>Copyediting is light. Proofs are sent to corresponding authors. Articles are published with Crossref DOIs.</p>
           <h2>Quick checklist</h2>
           <div className="overflow-hidden rounded-lg border border-border">
             <table className="journal-table">

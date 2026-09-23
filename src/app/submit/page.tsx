@@ -72,7 +72,6 @@ export default function SubmitPage() {
               <ul className="mt-2 text-xs leading-5 text-[#767676] list-disc pl-4">
                 <li>PDF + source files</li>
                 <li>Data availability + DOI</li>
-                <li>CC BY 4.0 licence</li>
               </ul>
             </div>
             <div className="rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">

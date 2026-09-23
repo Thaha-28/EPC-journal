@@ -30,19 +30,6 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Minimal facts - fitted */}
-      <div className="grid grid-cols-3 divide-x divide-[#EFEFF0] border-y border-[#EFEFF0] bg-white text-center">
-        <div className="px-4 py-3">
-          <p className="text-xs font-medium text-[#1C1D1E]">Published continuously</p>
-        </div>
-        <div className="px-4 py-3">
-          <p className="text-xs font-medium text-[#1C1D1E]">Peer reviewed</p>
-        </div>
-        <div className="px-4 py-3">
-          <p className="text-xs font-medium text-[#1C1D1E]">Open access</p>
-        </div>
-      </div>
-
       {/* About block - minimal */}
       <div className="px-6 sm:px-8 py-6">
         <div className="flex items-center justify-between gap-4 border-b border-[#EFEFF0] pb-3">
@@ -132,21 +119,7 @@ export default async function HomePage() {
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h3 className="text-sm font-semibold text-[#1C1D1E]">A venue for impactful environmental research</h3>
-            <p className="mt-2 text-sm leading-7 text-[#414246]">All articles are peer reviewed and indexed for discoverability. Our editorial process follows COPE and WAME guidance to ensure transparency and integrity.</p>
-            <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-              <div className="rounded border border-[#EFEFF0] bg-white p-3">
-                <p className="text-sm font-semibold text-[#1C1D1E]">Expert Review</p>
-                <p className="text-xs text-[#767676]">2+ reviewers</p>
-              </div>
-              <div className="rounded border border-[#EFEFF0] bg-white p-3">
-                <p className="text-sm font-semibold text-[#1C1D1E]">Open</p>
-                <p className="text-xs text-[#767676]">Open access</p>
-              </div>
-              <div className="rounded border border-[#EFEFF0] bg-white p-3">
-                <p className="text-sm font-semibold text-[#1C1D1E]">Indexed</p>
-                <p className="text-xs text-[#767676]">Crossref, Scholar, DOAJ</p>
-              </div>
-            </div>
+            <p className="mt-2 text-sm leading-7 text-[#414246]">Our editorial process follows COPE and WAME guidance to ensure transparency and integrity. See our <Link href="/editorial-policies" className="font-medium text-[#1C1D1E] hover:underline underline-offset-4">editorial policies</Link> and <Link href="/open-access" className="font-medium text-[#1C1D1E] hover:underline underline-offset-4">open access statement</Link>.</p>
           </div>
           <div className="rounded border border-[#D8D9DA] bg-white p-5">
             <p className="text-sm font-semibold text-[#1C1D1E]">Ready to submit</p>

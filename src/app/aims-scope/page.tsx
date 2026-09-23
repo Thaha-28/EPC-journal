@@ -133,13 +133,13 @@ export default function AimsScopePage() {
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
-            <p className="text-xs font-semibold tracking-widest uppercase text-[#1C1D1E]">Open access</p>
-            <p className="mt-1 text-sm leading-6 text-[#414246]">All content is open access under CC BY 4.0.</p>
-          </div>
           <div className="rounded border border-[#EFEFF0] bg-white p-4">
             <p className="text-xs font-semibold tracking-widest uppercase text-[#1C1D1E]">Audience</p>
             <p className="mt-1 text-sm leading-6 text-[#414246]">Environmental chemists, process engineers, biologists, ecologists, geochemists, geographers, modelers, and sustainability researchers in academia, government, and industry.</p>
+          </div>
+          <div className="rounded border border-[#EFEFF0] bg-white p-4">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[#1C1D1E]">Open access</p>
+            <p className="mt-1 text-sm leading-6 text-[#414246]">All content is open access. See our <Link href="/open-access">open access statement</Link> for licensing and indexing details.</p>
           </div>
         </div>
       </div>

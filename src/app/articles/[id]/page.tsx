@@ -262,9 +262,8 @@ export default async function ArticlePage({ params }: Props) {
           {/* Right rail - only article relevant tools, no journal wide sidebars */}
           <aside className="space-y-4 lg:sticky lg:top-20">
             <div className="journal-card">
-              <div className="journal-card-header flex items-center justify-between">
+              <div className="journal-card-header">
                 <span>Download</span>
-                <span className="text-xs font-normal normal-case tracking-normal text-[#767676]">Open Access</span>
               </div>
               <div className="p-3 space-y-2">
                 {(article.galleys ?? [{ label: "PDF", url: "#", fileType: "application/pdf" }]).map((g) => (
