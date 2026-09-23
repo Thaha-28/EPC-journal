@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { JournalLayout } from "@/components/Sidebar";
-import { getOjsUrl, siteConfig } from "@/lib/config";
+import { getOjsUrl, getOjsHost, siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Submit a Manuscript",
@@ -21,7 +21,7 @@ export default function SubmitPage() {
         <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">Author workflow</p>
         <h1 className="mt-1 font-display text-2xl font-bold text-[#1C1D1E]">Submit a manuscript</h1>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-[#414246]">
-          All submissions are handled securely in OJS — our online journal system. The button below will take you through account creation (if needed), the 4-step submission wizard, and then to your dashboard where you can track peer review, revisions, and proofs. Your EPC journal site and OJS share the same journal <strong>epc</strong> at <span className="font-mono text-xs bg-white border border-[#EFEFF0] px-1.5 py-0.5 rounded">ojs.epc-journal.org</span> (local: <span className="font-mono text-xs">127.0.0.1:8080</span>).
+          All submissions are handled securely in OJS — our online journal system. The button below will take you through account creation (if needed), the 4-step submission wizard, and then to your dashboard where you can track peer review, revisions, and proofs. Your EPC journal site and OJS share the same journal <strong>epc</strong> at <span className="font-mono text-xs bg-white border border-[#EFEFF0] px-1.5 py-0.5 rounded">{getOjsHost()}</span>.
         </p>
       </div>
 

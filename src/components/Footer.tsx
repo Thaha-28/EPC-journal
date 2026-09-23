@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/config";
+import { siteConfig, getOjsHost } from "@/lib/config";
 
 export function Footer() {
   return (
@@ -87,7 +87,7 @@ export function Footer() {
               <p className="mt-3 text-xs leading-4 text-white">
                 Journal website: epc-journal.org
                 <br />
-                Submission system: ojs.epc-journal.org
+                Submission system: {getOjsHost()}
               </p>
             </div>
           </div>

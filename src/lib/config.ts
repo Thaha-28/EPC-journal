@@ -11,7 +11,7 @@ export const siteConfig = {
   ojsLinks: {
     base: process.env.NEXT_PUBLIC_OJS_BASE_URL
       ? process.env.NEXT_PUBLIC_OJS_BASE_URL.replace(/\/api\/v1\/?$/, "").replace(/\/index\.php\/.*$/, "")
-      : "https://ojs.epc-journal.org",
+      : "https://epc-ojs-production.up.railway.app",
     login: "/index.php/epc/login",
     register: "/index.php/epc/user/register",
     submission: "/index.php/epc/submission/wizard",
@@ -46,4 +46,8 @@ export const siteConfig = {
 export function getOjsUrl(path: string) {
   const base = siteConfig.ojsLinks.base.replace(/\/$/, "");
   return `${base}${path}`;
+}
+
+export function getOjsHost() {
+  return siteConfig.ojsLinks.base.replace(/^https?:\/\//, "").replace(/\/$/, "");
 }
