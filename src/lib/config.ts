@@ -6,6 +6,12 @@ export const siteConfig = {
     "Environmental Processes and Chemistry is a diamond open access, peer reviewed journal publishing rigorous research on chemical processes in natural and engineered environments.",
   url: "https://epc-journal.org",
   contactEmail: process.env.CONTACT_FORM_EMAIL_TO || "editors@epc-journal.org",
+  janeway: {
+    baseUrl: (
+      process.env.NEXT_PUBLIC_JANEWAY_BASE_URL ?? "https://epc-janeway-production.up.railway.app"
+    ).replace(/\/$/, ""),
+    journalCode: "epc",
+  },
   issn: {
     online: "XXXX-XXXX",
     print: "XXXX-XXXX",

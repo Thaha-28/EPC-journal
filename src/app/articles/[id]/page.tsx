@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       authors: [authors],
     },
+    ...(article.janewayUrl ? { alternates: { canonical: article.janewayUrl } } : {}),
   };
 }
 
@@ -313,6 +314,22 @@ export default async function ArticlePage({ params }: Props) {
                   <span className="text-[#767676]">Licence</span>
                   <span className="font-medium text-[#1C1D1E]">CC BY 4.0</span>
                 </div>
+                {article.janewayUrl && (
+                  <div className="pt-2 border-t border-[#EFEFF0]">
+                    <a
+                      href={article.janewayUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1C1D1E] hover:underline underline-offset-4"
+                    >
+                      View on journal site
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <path d="M15 3h6v6M10 14L21 3" />
+                      </svg>
+                    </a>
+                  </div>
+                )}
                 {article.doi && (
                   <div className="pt-2 border-t border-[#EFEFF0] text-xs break-all">
                     <span className="font-bold text-[#414246]">DOI</span> <a href={doiUrl!} target="_blank" rel="noopener noreferrer" className="text-[#1C1D1E] hover:underline">{article.doi}</a>

@@ -19,6 +19,8 @@ export type JournalArticle = {
   pages?: string;
   galleys?: { label: string; url: string; fileType?: string }[];
   issueId?: number;
+  /** Canonical Janeway URL. Only set for articles served by the live API. */
+  janewayUrl?: string;
 };
 
 export type JournalIssue = {
@@ -206,6 +208,7 @@ function mapArticle(a: JanewayArticle, issueId?: number): JournalArticle {
     section: a.section || undefined,
     galleys: galleys.length > 0 ? galleys : undefined,
     issueId,
+    janewayUrl: `${JANEWAY_BASE}/epc/article/id/${a.pk}/`,
   };
 }
 
