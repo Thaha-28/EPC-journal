@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getArticleById, mockIssues } from "@/lib/ojs";
+import { getArticleById, getIssues, journalIssues } from "@/lib/journal";
 import { siteConfig } from "@/lib/config";
 import { ArticleSideTools, CitationTools, FigureDownload } from "@/components/CitationTools";
 import { AuthorHover } from "@/components/AuthorHover";
@@ -12,7 +12,14 @@ export const revalidate = 600;
 type Props = { params: Promise<{ id: string }> };
 
 export async function generateStaticParams() {
-  return mockIssues.flatMap((i) => i.articles.map((a) => ({ id: String(a.id) })));
+  try {
+    const issues = await getIssues();
+    const params = issues.flatMap((i) => i.articles.map((a) => ({ id: String(a.id) })));
+    if (params.length > 0) return params;
+  } catch {
+    // Fall through to static fallback ids.
+  }
+  return journalIssues.flatMap((i) => i.articles.map((a) => ({ id: String(a.id) })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig, getOjsHost } from "@/lib/config";
+import { siteConfig } from "@/lib/config";
 
 export function Footer() {
   return (
@@ -80,15 +80,10 @@ export function Footer() {
                 <Link href="/submit" className="inline-flex justify-center rounded bg-white px-4 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]">
                   Submit a manuscript
                 </Link>
-                <Link href="/login" className="inline-flex justify-center rounded border border-white bg-transparent px-4 py-2 text-sm font-medium !text-white visited:!text-white hover:bg-white/10">
-                  Author login
+                <Link href="/contact" className="inline-flex justify-center rounded border border-white bg-transparent px-4 py-2 text-sm font-medium !text-white visited:!text-white hover:bg-white/10">
+                  Contact the editors
                 </Link>
               </div>
-              <p className="mt-3 text-xs leading-4 text-white">
-                Journal website: epc-journal.org
-                <br />
-                Submission system: {getOjsHost()}
-              </p>
             </div>
           </div>
         </div>

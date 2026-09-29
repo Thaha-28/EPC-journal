@@ -5,29 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ojs.epc-journal.org",
-      },
-      {
-        protocol: "https",
-        hostname: "**.epc-journal.org",
-      },
-      {
-        protocol: "https",
-        hostname: "epc-ojs-production.up.railway.app",
-      },
-      {
-        protocol: "https",
-        hostname: "**.up.railway.app",
-      },
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "8080",
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "8080",
+        hostname: "epc-janeway-production.up.railway.app",
       },
     ],
   },
@@ -47,7 +25,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://ojs.epc-journal.org https://*.epc-journal.org https://epc-ojs-production.up.railway.app https://*.up.railway.app http://127.0.0.1:8080 http://localhost:8080",
+              "connect-src 'self'",
               "frame-ancestors 'none'",
             ].join("; "),
           },

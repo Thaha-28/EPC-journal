@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { siteConfig, getOjsUrl } from "@/lib/config";
+import { siteConfig } from "@/lib/config";
 
 export function Header() {
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -27,9 +27,6 @@ export function Header() {
             </Link>
 
             <div className="hidden lg:flex items-center gap-2 shrink-0 ml-auto">
-              <Link href="/login" className="btn-ghost text-sm">
-                Log in / Register
-              </Link>
               <Link href="/submit" className="btn-primary text-sm">
                 Submit an article
               </Link>
@@ -97,26 +94,6 @@ export function Header() {
           <Link href="/open-access" className="shrink-0 px-3 py-2 text-sm font-medium text-[#2F3032] hover:text-[#1C1D1E] hover:bg-[#F8F9FA] rounded">
             Open Access
           </Link>
-
-          <div className="ml-auto flex items-center gap-2 shrink-0 pl-4 border-l border-[#EFEFF0]">
-            <form action={getOjsUrl(siteConfig.ojsLinks.search)} method="get" target="_blank" className="flex items-center" role="search">
-              <div className="relative">
-                <input
-                  name="query"
-                  placeholder="Search this journal"
-                  aria-label="Search this journal"
-                  className="h-8 w-52 rounded-l border border-[#C2C3C6] bg-white px-3 pr-8 text-sm placeholder:text-[#767676] outline-none focus:border-[#1C1D1E] focus:ring-1 focus:ring-[#1C1D1E]/20"
-                />
-                <svg className="absolute right-2.5 top-2.5 text-[#767676]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="M20 20l-3.5-3.5" />
-                </svg>
-              </div>
-              <button type="submit" className="h-8 rounded-r bg-[#1C1D1E] px-3 text-xs font-semibold text-white hover:bg-[#000000] border border-[#1C1D1E] border-l-0">
-                Search
-              </button>
-            </form>
-          </div>
         </div>
       </nav>
 
@@ -140,11 +117,8 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              <Link href="/login" className="inline-flex justify-center rounded border border-[#D8D9DA] bg-white px-4 py-2.5 text-sm font-semibold text-[#1C1D1E]">
-                Log in
-              </Link>
-              <Link href="/submit" className="inline-flex justify-center rounded bg-[#1C1D1E] px-4 py-2.5 text-sm font-semibold text-white">
+            <div className="mt-3">
+              <Link href="/submit" className="inline-flex w-full justify-center rounded bg-[#1C1D1E] px-4 py-2.5 text-sm font-semibold text-white">
                 Submit
               </Link>
             </div>

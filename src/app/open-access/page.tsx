@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { JournalLayout } from "@/components/Sidebar";
-import { getOjsUrl } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Open Access and Indexing",
@@ -66,7 +65,7 @@ export default function OpenAccessPage() {
         <p>No fees for publication.</p>
         <div className="rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
           <p className="text-xs font-semibold tracking-widest uppercase text-[#1C1D1E]">Harvesters and librarians</p>
-          <p className="mt-1 text-sm leading-6 text-[#414246]">The journal supports OAI PMH for harvesting. Base URL example: {getOjsUrl("/index.php/epc/oai")}</p>
+          <p className="mt-1 text-sm leading-6 text-[#414246]">The journal supports OAI PMH for harvesting by indexers and aggregators.</p>
         </div>
       </div>
     </JournalLayout>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getCurrentIssue } from "@/lib/ojs";
+import { getCurrentIssue } from "@/lib/journal";
 import { JournalLayout } from "@/components/Sidebar";
 import { ArticleCard } from "@/components/ArticleCard";
 

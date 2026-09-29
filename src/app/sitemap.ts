@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
-import { mockIssues } from "@/lib/ojs";
+import { getIssues, journalIssues } from "@/lib/journal";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url.replace(/\/$/, "");
   const now = new Date();
 
@@ -18,7 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/archives",
   ];
 
-  const articlePaths = mockIssues.flatMap((issue) => issue.articles.map((a) => `/articles/${a.id}`));
+  let articlePaths: string[];
+  try {
+    const issues = await getIssues();
+    articlePaths = issues.flatMap((issue) => issue.articles.map((a) => `/articles/${a.id}`));
+  } catch {
+    articlePaths = journalIssues.flatMap((issue) => issue.articles.map((a) => `/articles/${a.id}`));
+  }
 
   return [...staticPaths, ...articlePaths].map((path) => ({
     url: `${base}${path || "/"}`,

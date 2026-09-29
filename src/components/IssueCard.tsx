@@ -1,7 +1,7 @@
 import Link from "next/link";
-import type { OjsIssue } from "@/lib/ojs";
+import type { JournalIssue } from "@/lib/journal";
 
-export function IssueCard({ issue }: { issue: OjsIssue }) {
+export function IssueCard({ issue }: { issue: JournalIssue }) {
   return (
     <div className="journal-card p-5">
       <div className="flex items-center gap-2 text-xs">

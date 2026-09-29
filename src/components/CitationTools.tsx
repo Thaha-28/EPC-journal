@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import type { OjsArticle } from "@/lib/ojs";
+import type { JournalArticle } from "@/lib/journal";
 import { siteConfig } from "@/lib/config";
 
-function formatAuthorsBibTeX(authors: OjsArticle["authors"]) {
+function formatAuthorsBibTeX(authors: JournalArticle["authors"]) {
   return authors.map((a) => a.fullName).join(" and ");
 }
 
-function formatAuthorsRIS(authors: OjsArticle["authors"]) {
+function formatAuthorsRIS(authors: JournalArticle["authors"]) {
   return authors.map((a) => `AU  - ${a.fullName}`).join("\n");
 }
 
@@ -29,7 +29,7 @@ function getDateParts(datePublished?: string) {
   return { year, month, day };
 }
 
-function generateRIS(article: OjsArticle) {
+function generateRIS(article: JournalArticle) {
   const { year, month, day } = getDateParts(article.datePublished);
   const pages = article.pages ?? "1-10";
   const [sp, ep] = pages.includes("-") ? pages.split("-") : [pages, ""];
@@ -52,7 +52,7 @@ function generateRIS(article: OjsArticle) {
     .join("\n");
 }
 
-function generateBibTeX(article: OjsArticle) {
+function generateBibTeX(article: JournalArticle) {
   const year = getYear(article.datePublished);
   const citeKey = `epc${year}${article.id}`;
   const authors = formatAuthorsBibTeX(article.authors);
@@ -70,18 +70,18 @@ function generateBibTeX(article: OjsArticle) {
 }`;
 }
 
-function generateEndNote(article: OjsArticle) {
+function generateEndNote(article: JournalArticle) {
   // EndNote tagged format is similar to RIS but with ENW extension
   return generateRIS(article);
 }
 
-function generateAPA(article: OjsArticle) {
+function generateAPA(article: JournalArticle) {
   const year = getYear(article.datePublished);
   const authors = article.authors.map((a) => a.fullName).join(", ");
   return `${authors} (${year}). ${article.title}. ${siteConfig.name}${article.pages ? `, ${article.pages}` : ""}. https://doi.org/${article.doi ?? ""}`.trim();
 }
 
-function generateVancouver(article: OjsArticle) {
+function generateVancouver(article: JournalArticle) {
   const year = getYear(article.datePublished);
   const authors = article.authors.map((a) => a.fullName).join(", ");
   return `${authors}. ${article.title}. ${siteConfig.name}. ${year};${article.pages ? `${article.pages}` : ""}. doi:${article.doi ?? ""}`;
@@ -99,7 +99,7 @@ function downloadFile(content: string, filename: string, mime: string) {
   URL.revokeObjectURL(url);
 }
 
-export function CitationTools({ article }: { article: OjsArticle }) {
+export function CitationTools({ article }: { article: JournalArticle }) {
   const [copied, setCopied] = useState(false);
   const apaText = generateAPA(article);
 
@@ -182,7 +182,7 @@ export function CitationTools({ article }: { article: OjsArticle }) {
   );
 }
 
-export function ArticleSideTools({ article }: { article: OjsArticle }) {
+export function ArticleSideTools({ article }: { article: JournalArticle }) {
   const [copiedLink, setCopiedLink] = useState(false);
 
   async function handleCopyLink() {

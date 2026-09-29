@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { OjsArticle } from "@/lib/ojs";
+import type { JournalArticle } from "@/lib/journal";
 
-export function ArticleCard({ article }: { article: OjsArticle }) {
+export function ArticleCard({ article }: { article: JournalArticle }) {
   return (
     <article className="group flex gap-4 rounded-lg border border-border bg-white p-4 hover:shadow-sm hover:border-[#d1d5db] transition">
       <div className="min-w-0 flex-1">

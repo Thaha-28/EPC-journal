@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { getIssues } from "@/lib/ojs";
+import { getIssues } from "@/lib/journal";
 import { JournalLayout } from "@/components/Sidebar";
 
 export const revalidate = 600;

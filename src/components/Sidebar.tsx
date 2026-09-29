@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig, getOjsUrl } from "@/lib/config";
+import { siteConfig } from "@/lib/config";
 
 export function LeftSidebar() {
   return (
@@ -22,7 +22,7 @@ export function LeftSidebar() {
           <Link href="/author-guidelines" className="mt-3 block text-center text-sm font-medium text-[#1C1D1E] hover:underline">
             View author guidelines →
           </Link>
-          <p className="mt-3 text-xs leading-4 text-[#767676] text-center">Via OJS — account creation, wizard, and tracking included.</p>
+          <p className="mt-3 text-xs leading-4 text-[#767676] text-center">Manuscripts are handled by the editorial office.</p>
         </div>
       </div>
 
@@ -63,11 +63,6 @@ export function LeftSidebar() {
               <Link href="/archives" className="block px-4 py-2.5 hover:bg-[#f8f9fb]">
                 All Issues
               </Link>
-            </li>
-            <li>
-              <a href={getOjsUrl(siteConfig.ojsLinks.search)} target="_blank" rel="noopener noreferrer" className="block px-4 py-2.5 hover:bg-[#f8f9fb]">
-                Search articles
-              </a>
             </li>
           </ul>
         </div>

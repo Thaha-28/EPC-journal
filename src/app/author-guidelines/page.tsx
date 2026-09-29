@@ -26,13 +26,13 @@ export default function AuthorGuidelinesPage() {
       <div className="border-t border-border bg-white px-6 sm:px-8 py-6">
         <div className="rounded border border-[#EFEFF0] bg-[#F8F9FA] p-5">
           <p className="text-sm font-semibold text-[#1C1D1E]">Submit your manuscript</p>
-          <p className="mt-1 text-sm leading-6 text-[#414246]">Submission, status tracking, revisions, and proofs are handled securely in the online system.</p>
+          <p className="mt-1 text-sm leading-6 text-[#414246]">Submissions are handled by email with the editorial office.</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Link href="/submit" className="rounded bg-[#1C1D1E] px-4 py-2 text-sm font-semibold text-white hover:bg-black">
               Start submission
             </Link>
-            <Link href="/register" className="rounded border border-[#D8D9DA] bg-white px-4 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]">
-              Register account
+            <Link href="/contact" className="rounded border border-[#D8D9DA] bg-white px-4 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-[#F8F9FA]">
+              Contact the editors
             </Link>
           </div>
         </div>

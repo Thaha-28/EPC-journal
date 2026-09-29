@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getRecentArticles } from "@/lib/ojs";
+import { getRecentArticles } from "@/lib/journal";
 import { JournalLayout } from "@/components/Sidebar";
 import { siteConfig } from "@/lib/config";
 
