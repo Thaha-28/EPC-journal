@@ -76,18 +76,22 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-a {
+/* Global anchor styles are wrapped in :where() so they have zero specificity:
+   Tailwind utilities (e.g. .text-white) and pseudo-class utilities
+   (.hover:text-white, .visited:text-white) must always win over them,
+   otherwise visited/hovered links on dark backgrounds turn dark and vanish. */
+:where(a) {
   color: #1C1D1E;
   text-decoration: none;
 }
 
-a:hover {
+:where(a:hover) {
   color: #000000;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-a:visited {
+:where(a:visited) {
   color: #1C1D1E;
 }
 
