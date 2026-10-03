@@ -26,7 +26,7 @@ export default async function HomePage() {
               Submit an article
             </Link>
           </div>
-          <p className="mt-4 text-xs tracking-wide text-[#767676]">Online ISSN: Pending Assignment · Continuous publication</p>
+          <p className="mt-4 text-xs tracking-wide text-[#767676]">Online ISSN: {siteConfig.issn.online} · Continuous publication</p>
         </div>
       </div>
 
@@ -39,7 +39,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <p className="mt-4 text-sm leading-7 text-[#2F3032]">
-          <strong>Environmental Processes and Chemistry (Online ISSN: Pending Assignment)</strong> publishes research across environmental processes, chemistry, remediation and treatment, and integrated environmental chemistry. We welcome experimental, field, and modelling studies that advance process understanding from molecular to landscape scales.
+          <strong>Environmental Processes and Chemistry (Online ISSN: {siteConfig.issn.online})</strong> publishes research across environmental processes, chemistry, remediation and treatment, and integrated environmental chemistry. We welcome experimental, field, and modelling studies that advance process understanding from molecular to landscape scales.
         </p>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded border border-[#EFEFF0] bg-white p-3.5">

@@ -26,6 +26,7 @@ export const siteConfig = {
     about: [
       { label: "Aims and Scope", href: "/aims-scope" },
       { label: "Editorial Board", href: "/editorial-board" },
+      { label: "Publisher Details", href: "/publisher" },
       { label: "Author Guidelines", href: "/author-guidelines" },
       { label: "Editorial Policies", href: "/editorial-policies" },
       { label: "Open Access", href: "/open-access" },

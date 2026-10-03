@@ -368,7 +368,7 @@ export default async function ArticlePage({ params }: Props) {
         {article.doi && <meta name="citation_doi" content={article.doi} />}
         {article.datePublished && <meta name="citation_publication_date" content={article.datePublished} />}
         <meta name="citation_journal_title" content={siteConfig.name} />
-        <meta name="citation_issn" content="Pending Assignment" />
+        <meta name="citation_issn" content={siteConfig.issn.online} />
         <meta name="citation_publisher" content={siteConfig.publisher} />
         {doiUrl && <meta name="citation_pdf_url" content={article.galleys?.[0]?.url ?? doiUrl} />}
       </>

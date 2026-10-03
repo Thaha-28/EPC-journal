@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { JournalLayout } from "@/components/Sidebar";
+import { EditorPhoto } from "@/components/EditorPhoto";
 
 export const metadata: Metadata = {
   title: "Editorial Board",
@@ -30,21 +30,9 @@ export default function EditorialBoardPage() {
         <div>
           <h2 className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E] border-b border-[#EFEFF0] pb-2">Chief Editors</h2>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
-               <div className="h-20 w-20 shrink-0 overflow-hidden rounded bg-white border border-[#D8D9DA] relative">
-                 <Image
-                   src="/editors/sheik-moideen-thaha.jpg"
-                   alt="Dr. Sheik Moideen Thaha S K"
-                   width={80}
-                   height={80}
-                   className="h-full w-full object-cover"
-                   loading="lazy"
-                 />
-                 <div className="absolute inset-0 flex items-center justify-center bg-white/90">
-                   <span className="text-sm font-bold text-[#1C1D1E]">SMT</span>
-                 </div>
-               </div>
-               <div className="min-w-0">
+<div className="flex gap-4 rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
+               <EditorPhoto src="/editors/sheik-moideen-thaha.jpg" name="Dr. Sheik Moideen Thaha S K" initials="SMT" />
+                <div className="min-w-0">
                  <p className="text-sm font-bold text-[#1C1D1E]">Dr. Sheik Moideen Thaha S K</p>
                  <p className="text-xs font-semibold text-[#414246]">Material Science and Nanochemistry</p>
                  <p className="mt-1 text-xs leading-4 text-[#767676]">Department of Chemistry, School of Advanced Sciences, Vellore Institute of Technology, India</p>
@@ -52,21 +40,9 @@ export default function EditorialBoardPage() {
                </div>
              </div>
 
-             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
-               <div className="h-20 w-20 shrink-0 overflow-hidden rounded bg-white border border-[#D8D9DA] relative">
-                 <Image
-                   src="/editors/mohamed-tharik.jpg"
-                   alt="Dr. A. Mohamed Tharik"
-                   width={80}
-                   height={80}
-                   className="h-full w-full object-cover"
-                   loading="lazy"
-                 />
-                 <div className="absolute inset-0 flex items-center justify-center bg-white/90">
-                   <span className="text-sm font-bold text-[#1C1D1E]">AMT</span>
-                 </div>
-               </div>
-               <div className="min-w-0">
+<div className="flex gap-4 rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
+               <EditorPhoto src="/editors/mohamed-tharik.jpg" name="Dr. A. Mohamed Tharik" initials="AMT" />
+                <div className="min-w-0">
                  <p className="text-sm font-bold text-[#1C1D1E]">Dr. A. Mohamed Tharik</p>
                  <p className="text-xs font-semibold text-[#414246]">Environmental Sciences</p>
                  <p className="mt-1 text-xs leading-4 text-[#767676]">Department of Chemistry, School of Advanced Sciences, Vellore Institute of Technology, India</p>
@@ -82,9 +58,7 @@ export default function EditorialBoardPage() {
           <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Environmental Remediation */}
             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-white p-4">
-              <div className="h-20 w-20 shrink-0 overflow-hidden rounded bg-[#F8F9FA] border border-[#D8D9DA]">
-                <Image src="/editors/manoj-sekaran.png" alt="Dr. Manoj Sekaran" width={80} height={80} className="h-full w-full object-cover" />
-              </div>
+              <EditorPhoto src="/editors/manoj-sekaran.png" name="Dr. Manoj Sekaran" initials="MS" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">Environmental Remediation</p>
                 <p className="mt-1 text-sm font-bold text-[#1C1D1E]">Dr. Manoj Sekaran</p>
@@ -94,9 +68,7 @@ export default function EditorialBoardPage() {
 
             {/* Ecological Bioinformatics */}
             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-white p-4">
-              <div className="h-20 w-20 shrink-0 overflow-hidden rounded bg-[#F8F9FA] border border-[#D8D9DA]">
-                <Image src="/editors/mohanraj-gopikrishnan.jpeg" alt="Dr. Mohanraj Gopikrishnan" width={80} height={80} className="h-full w-full object-cover" />
-              </div>
+              <EditorPhoto src="/editors/mohanraj-gopikrishnan.jpeg" name="Dr. Mohanraj Gopikrishnan" initials="MG" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">Ecological Bioinformatics</p>
                 <p className="mt-1 text-sm font-bold text-[#1C1D1E]">Dr. Mohanraj Gopikrishnan</p>
@@ -106,9 +78,7 @@ export default function EditorialBoardPage() {
 
             {/* Organic Chemistry */}
             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-white p-4">
-              <div className="h-20 w-20 shrink-0 overflow-hidden rounded bg-[#F8F9FA] border border-[#D8D9DA]">
-                <Image src="/editors/dhandapani-vinayagam.png" alt="Dr. Dhandapani Vinayagam" width={80} height={80} className="h-full w-full object-cover" />
-              </div>
+              <EditorPhoto src="/editors/dhandapani-vinayagam.png" name="Dr. Dhandapani Vinayagam" initials="DV" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">Organic Chemistry</p>
                 <p className="mt-1 text-sm font-bold text-[#1C1D1E]">Dr. Dhandapani Vinayagam</p>
