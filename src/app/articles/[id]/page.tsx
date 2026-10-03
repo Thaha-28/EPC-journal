@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getArticleById, getIssues, journalIssues } from "@/lib/journal";
 import { siteConfig } from "@/lib/config";
-import { ArticleSideTools, CitationTools, FigureDownload } from "@/components/CitationTools";
+import { ArticleSideTools, CitationTools } from "@/components/CitationTools";
 import { AuthorHover } from "@/components/AuthorHover";
 
 export const revalidate = 600;
@@ -145,123 +144,60 @@ export default async function ArticlePage({ params }: Props) {
               </div>
             </div>
 
-            {/* Article body - optimized for readability with fitted measure */}
+            {/* Article body - full text from Janeway when available */}
             <div className="px-6 sm:px-8 py-6 sm:py-8">
-              <div className="prose-epc mx-auto max-w-[72ch]">
-                <h2>Introduction</h2>
-                <p>
-                  Environmental processes at interfaces control the fate and transport of contaminants and nutrients. Understanding these mechanisms is essential for accurate prediction and effective remediation. This study examines key transformations under controlled laboratory and field conditions.
-                </p>
-                <p>
-                  Here we combine experimental and modelling approaches to quantify process rates and identify controlling factors. The results provide insight into pollutant behaviour in natural and engineered systems and inform strategies for water quality management.
-                </p>
-
-                <h2>Materials and Methods</h2>
-                <p>
-                  Methods are described with sufficient detail to ensure reproducibility. Data availability, code repositories, and uncertainty treatment are stated. Environmental relevance is established for each process studied.
-                </p>
-
-                <h3>Figure standard</h3>
-                <p>All figures are centered, use a thin border, and include a numbered caption in 12px with bold figure label. Images are responsive and limited to the text width for readability.</p>
-
-                <figure className="my-6 overflow-hidden rounded border border-[#D8D9DA] bg-white">
-                  <div className="bg-[#F8F9FA] p-3 sm:p-4 flex items-center justify-center">
-                    <Image
-                      src="/emblem-EPC.jpeg"
-                      alt="Example figure showing journal standard image sizing and border"
-                      width={640}
-                      height={360}
-                      className="h-auto max-h-[320px] w-auto max-w-full object-contain bg-white border border-[#EFEFF0] rounded"
-                    />
-                  </div>
-                  <figcaption className="border-t border-[#EFEFF0] bg-white px-4 py-2.5 text-center text-xs leading-5 text-[#414246]">
-                    <span className="font-bold text-[#1C1D1E]">Figure 1.</span> Journal standard figure. Image is centered, bordered, responsive, and limited to text width. Caption is centered, 12px, with bold label and regular description. Resolution should be at least 300 dpi in production.
-                  </figcaption>
-                  <FigureDownload src="/emblem-EPC.jpeg" filename={`EPC-${article.id}-Figure-1-high-quality.jpeg`} label="Figure 1 · 2400 × 1800 · JPEG" />
-                </figure>
-
-                <h3>Table standard</h3>
-                <p>Tables use the journal table style with header background, uppercase labels, and thin borders for clarity.</p>
-
-                <div className="my-6 overflow-hidden rounded border border-[#D8D9DA]">
-                  <table className="journal-table">
-                    <thead>
-                      <tr>
-                        <th>Parameter</th>
-                        <th>Value</th>
-                        <th>Unit</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Temperature</td>
-                        <td>25.0 ± 0.2</td>
-                        <td>°C</td>
-                      </tr>
-                      <tr>
-                        <td>pH</td>
-                        <td>7.1 ± 0.1</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td>Flow rate</td>
-                        <td>1.2</td>
-                        <td>L min<sup>-1</sup></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div className="border-t border-[#EFEFF0] bg-[#F8F9FA] px-3 py-2 text-center text-xs text-[#767676]">
-                    <span className="font-bold text-[#1C1D1E]">Table 1.</span> Journal standard table with thin borders and header in grey 100.
-                  </div>
+              {article.contentHtml ? (
+                <div
+                  className="prose-epc mx-auto max-w-[72ch]"
+                  dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+                />
+              ) : (
+                <div className="prose-epc mx-auto max-w-[72ch]">
+                  <h2>Full text</h2>
+                  {(article.galleys ?? []).length > 0 ? (
+                    <p>
+                      The full text of this article is available in the galley
+                      file{(article.galleys ?? []).length > 1 ? "s" : ""} below.
+                      Use the download buttons to read the complete manuscript,
+                      figures, and tables.
+                    </p>
+                  ) : (
+                    <p>
+                      The full text of this article is being prepared. The
+                      abstract above summarizes the work; the complete manuscript
+                      will appear here once production galleys are published.
+                    </p>
+                  )}
                 </div>
+              )}
 
-                <h2>Results and Discussion</h2>
-                <p>Results are presented with clear subheadings and sufficient white space. Discuss mechanisms, rates, and environmental implications. Maintain a single column measure near 68 to 75 characters for optimal reading speed.</p>
-
-                <figure className="my-6 overflow-hidden rounded border border-[#D8D9DA] bg-white">
-                  <div className="bg-white p-2">
-                    <Image
-                      src="/logo-epc.jpeg"
-                      alt="Second example figure with journal standard treatment"
-                      width={640}
-                      height={260}
-                      className="h-auto w-full max-h-[240px] object-contain"
-                    />
-                  </div>
-                  <figcaption className="border-t border-[#D8D9DA] bg-[#F8F9FA] px-4 py-2.5 text-center text-xs leading-5 text-[#414246]">
-                    <span className="font-bold text-[#1C1D1E]">Figure 2.</span> Another journal standard figure. All images must have alt text, scale with the text column, and never exceed the content width.
-                  </figcaption>
-                  <FigureDownload src="/logo-epc.jpeg" filename={`EPC-${article.id}-Figure-2-high-quality.jpeg`} label="Figure 2 · 1600 × 900 · JPEG" />
-                </figure>
-
-                <h2>Conclusion</h2>
-                <p>Conclude with implications, limitations, and future directions. Keep paragraphs short and scannable.</p>
-
-                <h2>Data Availability</h2>
-                <p>Primary data, code, and detailed methods are available in a repository with DOI. State the repository and DOI here.</p>
-
-                <h2>References</h2>
-                <p className="text-sm leading-6 text-[#414246]">References follow a consistent style with full journal names or abbreviations as required. Example: Rahman et al., Environ. Process. Chem., 2026, 1, 1-14. DOI links are included.</p>
-              </div>
-
-              <div className="mt-8 rounded border border-[#D8D9DA] bg-[#F8F9FA] px-4 py-3 flex flex-wrap gap-2">
-                <span className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Files</span>
-                {(article.galleys ?? [{ label: "PDF", url: "#", fileType: "application/pdf" }]).map((g) => (
-                  <a
-                    key={g.label}
-                    href={g.url}
-                    target={g.url.startsWith("http") ? "_blank" : undefined}
-                    rel={g.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-1.5 rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#1C1D1E] hover:bg-white hover:border-[#C2C3C6]"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                      <path d="M14 2v6h6" />
-                    </svg>
-                    {g.label} <span className="font-normal text-[#767676]">{g.fileType ?? "PDF"}</span>
+              {(article.galleys ?? []).length > 0 ? (
+                <div className="mt-8 rounded border border-[#D8D9DA] bg-[#F8F9FA] px-4 py-3 flex flex-wrap gap-2">
+                  <span className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Files</span>
+                  {(article.galleys ?? []).map((g) => (
+                    <a
+                      key={g.label}
+                      href={g.url}
+                      target={g.url.startsWith("http") ? "_blank" : undefined}
+                      rel={g.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-1.5 rounded bg-white border border-[#D8D9DA] px-3 py-1.5 text-xs font-semibold text-[#1C1D1E] hover:bg-white hover:border-[#C2C3C6]"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <path d="M14 2v6h6" />
+                      </svg>
+                      {g.label} <span className="font-normal text-[#767676]">{g.fileType ?? "PDF"}</span>
+                    </a>
+                  ))}
+                </div>
+              ) : article.janewayUrl ? (
+                <div className="mt-8 rounded border border-[#D8D9DA] bg-[#F8F9FA] px-4 py-3 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E]">Files</span>
+                  <a href={article.janewayUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-[#1C1D1E] hover:underline">
+                    View files on the journal site →
                   </a>
-                ))}
-              </div>
+                </div>
+              ) : null}
 
               <CitationTools article={article} />
             </div>
@@ -274,23 +210,36 @@ export default async function ArticlePage({ params }: Props) {
                 <span>Download</span>
               </div>
               <div className="p-3 space-y-2">
-                {(article.galleys ?? [{ label: "PDF", url: "#", fileType: "application/pdf" }]).map((g) => (
+                {(article.galleys ?? []).length > 0 ? (
+                  (article.galleys ?? []).map((g) => (
+                    <a
+                      key={g.label}
+                      href={g.url}
+                      target={g.url.startsWith("http") ? "_blank" : undefined}
+                      rel={g.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="flex items-center justify-between rounded border border-[#D8D9DA] bg-[#1C1D1E] px-3 py-2.5 text-sm font-semibold text-white hover:bg-[#000000]"
+                    >
+                      <span className="flex items-center gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                          <path d="M12 5v14M5 12l7 7 7-7" />
+                        </svg>
+                        {g.label}
+                      </span>
+                      <span className="text-xs font-normal text-white/80">{g.fileType ?? "PDF"}</span>
+                    </a>
+                  ))
+                ) : article.janewayUrl ? (
                   <a
-                    key={g.label}
-                    href={g.url}
-                    target={g.url.startsWith("http") ? "_blank" : undefined}
-                    rel={g.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center justify-between rounded border border-[#D8D9DA] bg-[#1C1D1E] px-3 py-2.5 text-sm font-semibold text-white hover:bg-[#000000]"
+                    href={article.janewayUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center rounded border border-[#D8D9DA] bg-[#1C1D1E] px-3 py-2.5 text-sm font-semibold text-white hover:bg-[#000000]"
                   >
-                    <span className="flex items-center gap-2">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                        <path d="M12 5v14M5 12l7 7 7-7" />
-                      </svg>
-                      {g.label}
-                    </span>
-                    <span className="text-xs font-normal text-white/80">{g.fileType ?? "PDF"}</span>
+                    View files on the journal site
                   </a>
-                ))}
+                ) : (
+                  <p className="px-1 text-xs leading-4 text-[#767676]">No downloadable files yet.</p>
+                )}
                 <p className="px-1 text-xs leading-4 text-[#767676]">All files are hosted by the journal and available for download.</p>
               </div>
             </div>

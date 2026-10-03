@@ -21,6 +21,8 @@ export type JournalArticle = {
   issueId?: number;
   /** Canonical Janeway URL. Only set for articles served by the live API. */
   janewayUrl?: string;
+  /** Sanitized full-text HTML from the Janeway render/HTML galley, if any. */
+  contentHtml?: string;
 };
 
 export type JournalIssue = {
@@ -144,6 +146,12 @@ type JanewayFrozenAuthor = {
   institution?: string;
 };
 
+type JanewayGalley = {
+  label?: string;
+  path?: string;
+  type?: string;
+};
+
 type JanewayArticle = {
   pk: number;
   title: string;
@@ -152,7 +160,8 @@ type JanewayArticle = {
   keywords?: { word: string }[];
   section?: string;
   date_published?: string;
-  galleys?: { label: string; path: string; type?: string }[];
+  render_galley?: JanewayGalley | null;
+  galleys?: JanewayGalley[];
 };
 
 type JanewayIssue = {
@@ -166,12 +175,112 @@ type JanewayIssue = {
   articles?: (number | string)[];
 };
 
+import sanitizeHtml from "sanitize-html";
+
 function stripHtml(html?: string): string | undefined {
   if (!html) return undefined;
   return html
     .replace(/<[^>]*>/g, " ")
     .replace(/\s+/g, " ")
     .trim() || undefined;
+}
+
+/** Galley looks like rendered full text (HTML/XML), not a PDF. */
+function isHtmlGalley(g?: JanewayGalley | null): boolean {
+  if (!g?.path) return false;
+  const type = (g.type ?? "").toLowerCase();
+  const path = g.path.toLowerCase();
+  return (
+    type.includes("html") ||
+    type.includes("xml") ||
+    type.includes("xhtml") ||
+    path.endsWith(".html") ||
+    path.endsWith(".htm") ||
+    path.endsWith(".xml") ||
+    path.endsWith(".xhtml")
+  );
+}
+
+function sanitizeArticleHtml(html: string): string {
+  const clean = sanitizeHtml(html, {
+    allowedTags: [
+      ...sanitizeHtml.defaults.allowedTags,
+      "h1",
+      "h2",
+      "img",
+      "figure",
+      "figcaption",
+      "section",
+      "article",
+      "table",
+      "thead",
+      "tbody",
+      "tfoot",
+      "tr",
+      "th",
+      "td",
+      "sub",
+      "sup",
+      "hr",
+      "caption",
+      "colgroup",
+      "col",
+    ],
+    allowedAttributes: {
+      a: ["href", "title"],
+      img: ["src", "alt", "title"],
+      td: ["colspan", "rowspan"],
+      th: ["colspan", "rowspan", "scope"],
+      col: ["span"],
+    },
+    allowedSchemes: ["http", "https", "mailto", "doi"],
+    transformTags: {
+      a: (tagName, attribs) => ({
+        tagName: "a",
+        attribs: { ...attribs, target: "_blank", rel: "noopener noreferrer" },
+      }),
+    },
+  });
+  // Absolutize Janeway-relative asset links so images resolve.
+  return clean.replace(/(src|href)="\/(?!\/)/g, `$1="${JANEWAY_BASE}/`);
+}
+
+/**
+ * Fetch the rendered full text of an article from its Janeway HTML galley.
+ * Returns sanitized HTML, or undefined when there is no HTML galley
+ * (e.g. PDF-only articles — those are served via galley download links).
+ * Same-origin (Janeway) URLs only; capped size + timeout.
+ */
+async function fetchGalleyHtml(
+  renderGalley: JanewayGalley | null | undefined,
+  galleys: JanewayGalley[] | undefined,
+): Promise<string | undefined> {
+  const candidate =
+    (renderGalley && isHtmlGalley(renderGalley) ? renderGalley : undefined) ??
+    (galleys ?? []).find(isHtmlGalley);
+  if (!candidate?.path) return undefined;
+  const url = candidate.path.startsWith("http")
+    ? candidate.path
+    : `${JANEWAY_BASE}${candidate.path}`;
+  if (!url.startsWith(JANEWAY_BASE)) return undefined;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 10000);
+    let res: Response;
+    try {
+      res = await fetch(url, { signal: ctrl.signal, next: { revalidate: 600 } });
+    } finally {
+      clearTimeout(timer);
+    }
+    if (!res.ok) return undefined;
+    const text = await res.text();
+    if (text.length > 500_000) return undefined;
+    if (!/<(p|h1|h2|h3|div|table|section|article|figure)\b/i.test(text)) return undefined;
+    const clean = sanitizeArticleHtml(text);
+    return clean.trim() ? clean : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 function pkFromUrl(url: number | string): number | null {
@@ -298,13 +407,23 @@ export async function getArticleById(id: string | number): Promise<JournalArticl
   try {
     const article = await janewayGet<JanewayArticle>(`/articles/${numeric}/`);
     // Attach its issue id when known.
+    let ownerId: number | undefined;
     try {
       const issues = await fetchLiveIssues();
-      const owner = issues.find((i) => i.articles.some((a) => a.id === numeric));
-      return mapArticle(article, owner?.id);
+      ownerId = issues.find((i) => i.articles.some((a) => a.id === numeric))?.id;
     } catch {
-      return mapArticle(article);
+      // No issue context; continue without it.
     }
+    const mapped = mapArticle(article, ownerId);
+    // Full text from the Janeway HTML galley when the article has one.
+    // PDF-only articles keep abstract + galley download links.
+    try {
+      const contentHtml = await fetchGalleyHtml(article.render_galley, article.galleys);
+      if (contentHtml) return { ...mapped, contentHtml };
+    } catch {
+      // Fall through to metadata-only article.
+    }
+    return mapped;
   } catch {
     for (const issue of journalIssues) {
       const found = issue.articles.find((a) => a.id === numeric);
