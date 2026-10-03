@@ -47,48 +47,50 @@
   --font-serif: var(--font-source-serif);
 }
 
-* {
-  border-color: var(--border);
-}
+/* Element-level defaults MUST live in @layer base.
+   Tailwind v4 emits utilities in @layer utilities; unlayered rules beat
+   every layered rule regardless of specificity, so an unlayered `a` or `*`
+   rule would override .text-white / .border-* utilities and make white text
+   on dark buttons/footers render dark. */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background: #F8F9FA;
-  color: #1C1D1E;
-  font-family: var(--font-open-sans), "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+  body {
+    background: #F8F9FA;
+    color: #1C1D1E;
+    font-family: var(--font-open-sans), "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-open-sans), "Open Sans", sans-serif;
-  color: #1C1D1E;
-  letter-spacing: -0.01em;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-open-sans), "Open Sans", sans-serif;
+    color: #1C1D1E;
+    letter-spacing: -0.01em;
+  }
+
+  /* :where() keeps specificity at zero so utilities always win */
+  :where(a) {
+    color: #1C1D1E;
+    text-decoration: none;
+  }
+
+  :where(a:visited) {
+    color: #1C1D1E;
+  }
 }
 
 .font-display {
   font-family: var(--font-source-serif), "Source Serif Pro", Georgia, serif;
   letter-spacing: -0.02em;
-}
-
-/* Global anchor styles are wrapped in :where() so they have zero specificity:
-   Tailwind utilities (e.g. .text-white) and pseudo-class utilities
-   (.hover:text-white, .visited:text-white) must always win over them,
-   otherwise visited/hovered links on dark backgrounds turn dark and vanish.
-   No global hover rule: buttons must not change colour/underline on hover;
-   links that want hover feedback declare hover: utilities explicitly. */
-:where(a) {
-  color: #1C1D1E;
-  text-decoration: none;
-}
-
-:where(a:visited) {
-  color: #1C1D1E;
 }
 
 /* Ensure black buttons keep white text even when visited */
