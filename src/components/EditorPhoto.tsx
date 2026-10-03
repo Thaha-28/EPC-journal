@@ -5,12 +5,10 @@ import { useState } from "react";
 export function EditorPhoto({
   src,
   name,
-  initials,
   size = 80,
 }: {
   src?: string;
   name: string;
-  initials: string;
   size?: number;
 }) {
   const [failed, setFailed] = useState(false);
@@ -24,7 +22,20 @@ export function EditorPhoto({
         role="img"
         aria-label={name}
       >
-        <span className="text-sm font-bold text-[#767676]">{initials}</span>
+        <svg
+          width={size * 0.55}
+          height={size * 0.55}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#767676"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" />
+        </svg>
       </div>
     );
   }

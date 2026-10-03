@@ -1,0 +1,14 @@
+# Railway deployment for the EPC Next.js frontend.
+# Deploy this repo as a new Railway service (Dockerfile builder).
+# The app serves the public journal site; the Janeway editorial system
+# stays on its own service and is linked via NEXT_PUBLIC_JANEWAY_BASE_URL.
+[build]
+builder = "dockerfile"
+
+[deploy]
+numInstances = 1
+restartPolicyType = "on_failure"
+healthcheckTimeout = 100
+
+[services.ports]
+port = 3000

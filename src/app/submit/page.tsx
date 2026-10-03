@@ -39,8 +39,8 @@ export default function SubmitPage() {
           <h2 className="text-sm font-bold">Ready to submit?</h2>
           <p className="mt-1 text-sm leading-6 text-white/80">Start a new submission in the editorial system. You will need an author account — registration takes a minute and includes email confirmation.</p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <a href={submitUrl} className="inline-flex items-center justify-center rounded bg-white px-5 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#1C1D1E]" style={{ color: "#1C1D1E" }}>Start online submission →</a>
-            <a href={registerUrl} className="inline-flex items-center justify-center rounded border border-white bg-transparent px-5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1C1D1E]" style={{ color: "#ffffff" }}>Create author account</a>
+            <a href={submitUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded bg-white px-5 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#1C1D1E]" style={{ color: "#1C1D1E" }}>Start online submission →</a>
+            <a href={registerUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded border border-white bg-transparent px-5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1C1D1E]" style={{ color: "#ffffff" }}>Create author account</a>
             <Link href="/author-guidelines" className="inline-flex items-center justify-center rounded border border-white bg-transparent px-5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1C1D1E]" style={{ color: "#ffffff" }}>Read author guidelines</Link>
           </div>
           <p className="mt-3 text-xs text-white/60">Editorial system: <span className="font-mono">{submitUrl}</span></p>
@@ -85,7 +85,7 @@ export default function SubmitPage() {
               </div>
               <p className="mt-2 text-sm leading-6 text-[#414246]">Follow revisions, copyediting, and publication from your author dashboard.</p>
               <div className="mt-3 flex flex-col gap-2">
-                <a href={dashboardUrl} className="inline-flex justify-center rounded bg-white border border-[#D8D9DA] px-3 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-white">Author dashboard</a>
+                <a href={dashboardUrl} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded bg-white border border-[#D8D9DA] px-3 py-2 text-sm font-semibold text-[#1C1D1E] hover:bg-white">Author dashboard</a>
               </div>
             </div>
           </div>

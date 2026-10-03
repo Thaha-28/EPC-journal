@@ -31,7 +31,7 @@ export default function EditorialBoardPage() {
           <h2 className="text-xs font-bold tracking-widest uppercase text-[#1C1D1E] border-b border-[#EFEFF0] pb-2">Chief Editors</h2>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
 <div className="flex gap-4 rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
-               <EditorPhoto src="/editors/sheik-moideen-thaha.jpg" name="Dr. Sheik Moideen Thaha S K" initials="SMT" />
+               <EditorPhoto src="/editors/sheik-moideen-thaha.jpg" name="Dr. Sheik Moideen Thaha S K" />
                 <div className="min-w-0">
                  <p className="text-sm font-bold text-[#1C1D1E]">Dr. Sheik Moideen Thaha S K</p>
                  <p className="text-xs font-semibold text-[#414246]">Material Science and Nanochemistry</p>
@@ -41,7 +41,7 @@ export default function EditorialBoardPage() {
              </div>
 
 <div className="flex gap-4 rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
-               <EditorPhoto src="/editors/mohamed-tharik.jpg" name="Dr. A. Mohamed Tharik" initials="AMT" />
+               <EditorPhoto src="/editors/mohamed-tharik.jpg" name="Dr. A. Mohamed Tharik" />
                 <div className="min-w-0">
                  <p className="text-sm font-bold text-[#1C1D1E]">Dr. A. Mohamed Tharik</p>
                  <p className="text-xs font-semibold text-[#414246]">Environmental Sciences</p>
@@ -58,7 +58,7 @@ export default function EditorialBoardPage() {
           <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Environmental Remediation */}
             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-white p-4">
-              <EditorPhoto src="/editors/manoj-sekaran.png" name="Dr. Manoj Sekaran" initials="MS" />
+              <EditorPhoto src="/editors/manoj-sekaran.png" name="Dr. Manoj Sekaran" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">Environmental Remediation</p>
                 <p className="mt-1 text-sm font-bold text-[#1C1D1E]">Dr. Manoj Sekaran</p>
@@ -68,7 +68,7 @@ export default function EditorialBoardPage() {
 
             {/* Ecological Bioinformatics */}
             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-white p-4">
-              <EditorPhoto src="/editors/mohanraj-gopikrishnan.jpeg" name="Dr. Mohanraj Gopikrishnan" initials="MG" />
+              <EditorPhoto src="/editors/mohanraj-gopikrishnan.jpeg" name="Dr. Mohanraj Gopikrishnan" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">Ecological Bioinformatics</p>
                 <p className="mt-1 text-sm font-bold text-[#1C1D1E]">Dr. Mohanraj Gopikrishnan</p>
@@ -78,7 +78,7 @@ export default function EditorialBoardPage() {
 
             {/* Organic Chemistry */}
             <div className="flex gap-4 rounded border border-[#EFEFF0] bg-white p-4">
-              <EditorPhoto src="/editors/dhandapani-vinayagam.png" name="Dr. Dhandapani Vinayagam" initials="DV" />
+              <EditorPhoto src="/editors/dhandapani-vinayagam.png" name="Dr. Dhandapani Vinayagam" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold tracking-widest uppercase text-[#767676]">Organic Chemistry</p>
                 <p className="mt-1 text-sm font-bold text-[#1C1D1E]">Dr. Dhandapani Vinayagam</p>
