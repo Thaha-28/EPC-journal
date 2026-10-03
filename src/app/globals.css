@@ -79,16 +79,12 @@ h1, h2, h3, h4, h5, h6 {
 /* Global anchor styles are wrapped in :where() so they have zero specificity:
    Tailwind utilities (e.g. .text-white) and pseudo-class utilities
    (.hover:text-white, .visited:text-white) must always win over them,
-   otherwise visited/hovered links on dark backgrounds turn dark and vanish. */
+   otherwise visited/hovered links on dark backgrounds turn dark and vanish.
+   No global hover rule: buttons must not change colour/underline on hover;
+   links that want hover feedback declare hover: utilities explicitly. */
 :where(a) {
   color: #1C1D1E;
   text-decoration: none;
-}
-
-:where(a:hover) {
-  color: #000000;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 :where(a:visited) {
