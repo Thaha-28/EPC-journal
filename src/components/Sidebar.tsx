@@ -83,7 +83,7 @@ export function RightSidebar() {
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">ISSN</span>
-            <span className="font-medium">{siteConfig.issn.online}</span>
+            <span className="font-medium">Pending Assignment</span>
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Frequency</span>

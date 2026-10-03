@@ -39,9 +39,9 @@ export default function SubmitPage() {
           <h2 className="text-sm font-bold">Ready to submit?</h2>
           <p className="mt-1 text-sm leading-6 text-white/80">Start a new submission in the editorial system. You will need an author account — registration takes a minute and includes email confirmation.</p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <a href={submitUrl} className="inline-flex items-center justify-center rounded bg-white px-5 py-2.5 text-sm font-bold text-[#1C1D1E] hover:bg-[#F8F9FA]">Start online submission →</a>
-            <a href={registerUrl} className="inline-flex items-center justify-center rounded border border-white/20 bg-transparent px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10">Create author account</a>
-            <Link href="/author-guidelines" className="inline-flex items-center justify-center rounded border border-white/20 bg-transparent px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10">Read author guidelines</Link>
+            <a href={submitUrl} className="inline-flex items-center justify-center rounded bg-white px-5 py-2.5 text-sm font-bold text-[#1C1D1E] hover:bg-[#F8F9FA] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#1C1D1E]">Start online submission →</a>
+            <a href={registerUrl} className="inline-flex items-center justify-center rounded border border-white bg-transparent px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1C1D1E]">Create author account</a>
+            <Link href="/author-guidelines" className="inline-flex items-center justify-center rounded border border-white bg-transparent px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1C1D1E]">Read author guidelines</Link>
           </div>
           <p className="mt-3 text-xs text-white/60">Editorial system: <span className="font-mono">{submitUrl}</span></p>
         </div>

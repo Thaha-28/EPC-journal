@@ -186,7 +186,7 @@ export function ArticleSideTools({ article }: { article: JournalArticle }) {
   const [copiedLink, setCopiedLink] = useState(false);
 
   async function handleCopyLink() {
-    const url = typeof window !== "undefined" ? window.location.href : `https://epc-journal.org/articles/${article.id}`;
+    const url = typeof window !== "undefined" ? window.location.href : `${siteConfig.url}/articles/${article.id}`;
     try {
       await navigator.clipboard.writeText(url);
       setCopiedLink(true);
@@ -204,7 +204,7 @@ export function ArticleSideTools({ article }: { article: JournalArticle }) {
   }
 
   async function handleShare() {
-    const url = typeof window !== "undefined" ? window.location.href : `https://epc-journal.org/articles/${article.id}`;
+    const url = typeof window !== "undefined" ? window.location.href : `${siteConfig.url}/articles/${article.id}`;
     const title = article.title;
     if (navigator.share) {
       try {

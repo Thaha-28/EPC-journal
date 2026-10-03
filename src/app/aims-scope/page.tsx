@@ -5,56 +5,56 @@ import { JournalLayout } from "@/components/Sidebar";
 export const metadata: Metadata = {
   title: "Aims and Scope",
   description:
-    "Aims and scope of Environmental Processes and Chemistry covering environmental processes, chemistry, biology, ecology and interdisciplinary environmental science.",
+    "Aims and scope of Environmental Processes and Chemistry covering environmental processes, chemistry, remediation and treatment, and integrated environmental chemistry.",
 };
 
 const scopeGroups = [
   {
     title: "Environmental Processes",
     items: [
-      "Climate and environmental change",
-      "Environmental monitoring",
-      "Water and soil systems",
-      "Pollution and remediation",
-      "Environmental modelling",
-      "Environmental risk assessment",
+      "Biogeochemical processes and elemental cycling",
+      "Chemical processes in water, soil and sediments",
+      "Contaminant fate, transport and transformation",
+      "Environmental pollution processes",
+      "Environmental monitoring and chemical assessment",
+      "Environmental modelling of chemical processes",
+      "Chemical processes at air–water–soil interfaces",
     ],
   },
   {
     title: "Environmental Chemistry",
     items: [
       "Environmental analytical chemistry",
-      "Contaminants",
-      "Biogeochemistry",
-      "Chemical fate and transport",
-      "Soil and water chemistry",
-      "Emerging pollutants",
+      "Organic and inorganic contaminants",
+      "Emerging contaminants and pollutants",
+      "Water and soil chemistry",
+      "Chemical speciation, bioavailability and toxicity",
+      "Environmental geochemistry",
+      "Atmospheric and aquatic chemistry",
+      "Chemical interactions between pollutants and environmental matrices",
     ],
   },
   {
-    title: "Environmental Biology and Ecology",
+    title: "Environmental Remediation and Treatment",
     items: [
-      "Biodiversity",
-      "Ecosystem ecology",
-      "Conservation biology",
-      "Environmental microbiology",
-      "Ecotoxicology",
-      "Species environment interactions",
-      "Ecosystem functioning",
+      "Chemical and physicochemical remediation",
+      "Advanced oxidation processes",
+      "Adsorption, sorption and separation",
+      "Photocatalysis and catalytic degradation",
+      "Electrochemical environmental processes",
+      "Pollutant transformation and degradation",
+      "Water and soil pollution treatment",
     ],
   },
   {
-    title: "Interdisciplinary Environmental Science",
+    title: "Integrated Environmental Chemistry",
     items: [
-      "Climate ecosystem interactions",
-      "Human environment systems",
-      "Environmental health",
-      "Geospatial environmental science",
-      "Integrated environmental assessment",
-      "Photocatalysis and pollutant degradation",
-      "Catalytic deactivation and regeneration",
-      "Nanocatalysis and advanced materials for environmental applications",
-      "Water research and treatment processes",
+      "Chemistry–climate interactions",
+      "Chemistry–ecosystem interactions",
+      "Environmental risk associated with contaminants",
+      "Microplastics and associated chemical contaminants",
+      "Nanomaterials and their environmental transformations",
+      "Chemical processes related to circular economy and resource recovery",
     ],
   },
 ];
@@ -123,12 +123,12 @@ export default function AimsScopePage() {
           <h2>Out of scope</h2>
           <p>Pure monitoring reports without process insight, purely descriptive work without mechanistic analysis, or studies where environmental relevance is not established will be returned without review.</p>
 
-          <h2>Article types</h2>
+          <h2>Article Types</h2>
           <ul>
-            <li>Research Articles</li>
-            <li>Reviews and Tutorials</li>
-            <li>Perspectives and Commentaries</li>
-            <li>Methods and Data Reports with validation</li>
+            <li><strong>Research Articles:</strong> Original research addressing significant advances in environmental processes, chemistry, contaminant behaviour, environmental transformation, remediation, and related interdisciplinary areas.</li>
+            <li><strong>Review Articles:</strong> Critical and comprehensive evaluations of established and emerging research, highlighting advances, knowledge gaps, challenges, and future research directions.</li>
+            <li><strong>Short Communications:</strong> Concise reports of novel and scientifically significant findings that warrant rapid communication to the research community.</li>
+            <li><strong>Perspectives:</strong> Expert analyses offering forward-looking views on emerging concepts, unresolved questions, research priorities, and future directions in environmental processes and chemistry.</li>
           </ul>
         </div>
 

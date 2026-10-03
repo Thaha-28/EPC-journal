@@ -51,6 +51,13 @@ export default function AuthorGuidelinesPage() {
           <p>Primary data, code, and detailed methods must be available. Use repositories with DOIs and cite them.</p>
           <h3>References and units</h3>
           <p>Use consistent citation style. Use SI units. Show uncertainties where relevant. Report detection limits and QA QC.</p>
+          <h2>Article Types</h2>
+          <ul>
+            <li><strong>Research Articles:</strong> Original research addressing significant advances in environmental processes, chemistry, contaminant behaviour, environmental transformation, remediation, and related interdisciplinary areas.</li>
+            <li><strong>Review Articles:</strong> Critical and comprehensive evaluations of established and emerging research, highlighting advances, knowledge gaps, challenges, and future research directions.</li>
+            <li><strong>Short Communications:</strong> Concise reports of novel and scientifically significant findings that warrant rapid communication to the research community.</li>
+            <li><strong>Perspectives:</strong> Expert analyses offering forward-looking views on emerging concepts, unresolved questions, research priorities, and future directions in environmental processes and chemistry.</li>
+          </ul>
           <h2>Peer review</h2>
           <p>Peer review is conducted by at least two independent reviewers, editor makes final decision. Typical timeline: first decision within 4 to 6 weeks. See our <Link href="/editorial-policies">editorial policies</Link> for the full review process.</p>
           <h2>After acceptance</h2>

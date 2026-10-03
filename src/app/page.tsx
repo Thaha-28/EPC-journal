@@ -26,7 +26,7 @@ export default async function HomePage() {
               Submit an article
             </Link>
           </div>
-          <p className="mt-4 text-xs tracking-wide text-[#767676]">Online ISSN {siteConfig.issn.online} · Continuous publication</p>
+          <p className="mt-4 text-xs tracking-wide text-[#767676]">Online ISSN: Pending Assignment · Continuous publication</p>
         </div>
       </div>
 
@@ -39,7 +39,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <p className="mt-4 text-sm leading-7 text-[#2F3032]">
-          <strong>Environmental Processes and Chemistry (Online ISSN: {siteConfig.issn.online})</strong> publishes research across environmental processes, chemistry, biology and ecology, and interdisciplinary environmental science. We welcome experimental, field, and modelling studies that advance process understanding from molecular to landscape scales.
+          <strong>Environmental Processes and Chemistry (Online ISSN: Pending Assignment)</strong> publishes research across environmental processes, chemistry, remediation and treatment, and integrated environmental chemistry. We welcome experimental, field, and modelling studies that advance process understanding from molecular to landscape scales.
         </p>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded border border-[#EFEFF0] bg-white p-3.5">
@@ -51,12 +51,12 @@ export default async function HomePage() {
             <p className="mt-1.5 text-sm leading-5 text-[#767676]">Analytical chemistry, contaminants, biogeochemistry, fate and transport, soil and water chemistry, emerging pollutants.</p>
           </div>
           <div className="rounded border border-[#EFEFF0] bg-white p-3.5">
-            <p className="text-xs font-semibold text-[#1C1D1E]">Biology and Ecology</p>
-            <p className="mt-1.5 text-sm leading-5 text-[#767676]">Biodiversity, ecosystem ecology, conservation, microbiology, ecotoxicology, species environment interactions.</p>
+            <p className="text-xs font-semibold text-[#1C1D1E]">Environmental Remediation and Treatment</p>
+            <p className="mt-1.5 text-sm leading-5 text-[#767676]">Chemical and physicochemical remediation, advanced oxidation processes, adsorption, photocatalysis, electrochemical processes.</p>
           </div>
           <div className="rounded border border-[#EFEFF0] bg-white p-3.5">
-            <p className="text-xs font-semibold text-[#1C1D1E]">Interdisciplinary</p>
-            <p className="mt-1.5 text-sm leading-5 text-[#767676]">Climate ecosystem interactions, environmental health, geospatial science, photocatalysis, nanocatalysis, water research.</p>
+            <p className="text-xs font-semibold text-[#1C1D1E]">Integrated Environmental Chemistry</p>
+            <p className="mt-1.5 text-sm leading-5 text-[#767676]">Chemistry–climate and ecosystem interactions, microplastics, nanomaterials, circular economy, and resource recovery.</p>
           </div>
         </div>
       </div>

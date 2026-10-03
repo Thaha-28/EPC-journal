@@ -13,8 +13,8 @@ export const siteConfig = {
     journalCode: "epc",
   },
   issn: {
-    online: "XXXX-XXXX",
-    print: "XXXX-XXXX",
+    online: "Pending Assignment",
+    print: "Pending Assignment",
   },
   publisher: "Environmental Processes and Chemistry",
   nav: {

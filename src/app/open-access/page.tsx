@@ -26,9 +26,9 @@ export default function OpenAccessPage() {
         <h2>Open access</h2>
         <p>All articles are open access and free to read immediately on publication under Creative Commons Attribution 4.0 International (CC BY 4.0). Authors retain copyright.</p>
         <h3>Licensing</h3>
-        <p>See the license stated in the publication details of each article.</p>
-        <h2>Indexing status</h2>
-        <p>The journal registers DOIs via Crossref and supports harvesting via OAI PMH.</p>
+        <p><strong>Copyright:</strong> © 2026 EnviNova Scientific Publishing<br />
+        <strong>License:</strong> This article is published under the Creative Commons Attribution 4.0 International License (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>).</p>
+        <h2>Abstracting, Indexing & Discoverability</h2>
         <div className="overflow-hidden rounded border border-[#EFEFF0]">
           <table className="journal-table">
             <thead>
@@ -39,34 +39,40 @@ export default function OpenAccessPage() {
             </thead>
             <tbody>
               <tr>
-                <td>DOAJ</td>
-                <td>Application upon first issue</td>
+                <td>Crossref</td>
+                <td>DOI registration and scholarly metadata</td>
               </tr>
               <tr>
-                <td>Crossref</td>
-                <td>DOIs, funding and ORCID metadata</td>
+                <td>OAI-PMH</td>
+                <td>Enabled for metadata harvesting</td>
               </tr>
               <tr>
                 <td>OpenAIRE</td>
-                <td>Via OAI PMH</td>
+                <td>Registration/harvesting planned</td>
               </tr>
               <tr>
                 <td>Google Scholar</td>
-                <td>Optimized for indexing with citation metadata</td>
+                <td>Structured metadata and discoverability optimized</td>
               </tr>
               <tr>
-                <td>Scopus and Web of Science</td>
-                <td>After sustained publication record</td>
+                <td>DOAJ</td>
+                <td>Application planned after eligibility requirements are met</td>
+              </tr>
+              <tr>
+                <td>Scopus</td>
+                <td>Future application subject to evaluation</td>
+              </tr>
+              <tr>
+                <td>Web of Science</td>
+                <td>Future application subject to evaluation</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <h2>Fees</h2>
-        <p>No fees for publication.</p>
-        <div className="rounded border border-[#EFEFF0] bg-[#F8F9FA] p-4">
-          <p className="text-xs font-semibold tracking-widest uppercase text-[#1C1D1E]">Harvesters and librarians</p>
-          <p className="mt-1 text-sm leading-6 text-[#414246]">The journal supports OAI PMH for harvesting by indexers and aggregators.</p>
-        </div>
+        <h2>Publication Fees</h2>
+        <p>Environmental Processes and Chemistry currently charges no submission fees, article processing charges (APCs), page charges, colour charges, or other mandatory publication fees.</p>
+        <p>All articles are published open access and are freely available to readers immediately upon publication.</p>
+        <p>Editorial board details and Publisher details may be found under the ABOUT button.</p>
       </div>
     </JournalLayout>
   );
