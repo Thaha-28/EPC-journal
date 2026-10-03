@@ -10,12 +10,12 @@ export function Footer() {
             <div>
               <p className="font-display text-base font-bold leading-tight text-white">Environmental Processes and Chemistry</p>
               <p className="mt-3 text-sm leading-6 text-white">Peer reviewed. Open access. All articles under CC BY 4.0.</p>
-              <p className="mt-4 text-xs leading-5 text-white/90">
+              <p className="mt-4 text-xs leading-5 !text-white">
                 Online ISSN: Pending Assignment
                 <br />
                 {siteConfig.publisher}
                 <br />
-                <a href={`mailto:${siteConfig.contactEmail}`} className="text-white/90 hover:text-white hover:underline underline focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                <a href={`mailto:${siteConfig.contactEmail}`} className="!text-white visited:!text-white hover:!text-white hover:underline underline focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                   {siteConfig.contactEmail}
                 </a>
               </p>
@@ -25,22 +25,22 @@ export function Footer() {
               <p className="text-xs font-bold tracking-widest uppercase text-white">Explore</p>
               <ul className="mt-3 space-y-2 text-sm text-white">
                 <li>
-                   <Link href="/current" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/current" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Current Issue
                    </Link>
                 </li>
                 <li>
-                   <Link href="/archives" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/archives" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Archives
                    </Link>
                 </li>
                 <li>
-                   <Link href="/aims-scope" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/aims-scope" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Aims and Scope
                    </Link>
                 </li>
                 <li>
-                   <Link href="/author-guidelines" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/author-guidelines" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Author Guidelines
                    </Link>
                 </li>
@@ -51,22 +51,22 @@ export function Footer() {
               <p className="text-xs font-bold tracking-widest uppercase text-white">Policies and information</p>
               <ul className="mt-3 space-y-2 text-sm text-white">
                 <li>
-                   <Link href="/editorial-policies" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/editorial-policies" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Editorial and Ethics Policies
                    </Link>
                 </li>
                 <li>
-                   <Link href="/open-access" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/open-access" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Open Access and Indexing
                    </Link>
                 </li>
                 <li>
-                   <Link href="/editorial-board" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/editorial-board" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Editorial Board
                    </Link>
                 </li>
                 <li>
-                   <Link href="/contact" className="text-white/90 hover:text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
+                   <Link href="/contact" className="!text-white visited:!text-white hover:!text-white hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2F3032] rounded-sm">
                      Contact
                    </Link>
                 </li>
